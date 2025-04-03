@@ -1,0 +1,2863 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{tikz}
+\usepackage{mathpazo}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Branching Processes
+\end_layout
+
+\begin_layout Section
+17.3.2025
+\end_layout
+
+\begin_layout Standard
+We start with a probability space:
+ 
+\begin_inset Formula $\mathcal{F}=\left(\Omega,\sigma,\mathbb{P}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $a\in\Omega$
+\end_inset
+
+ is a single event in our game,
+ such as the result of a roll of a die.
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra,
+ over which we define our probability.
+ If we can,
+ we will use the power set of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+,
+ also known as 
+\begin_inset Formula $2^{\Omega}$
+\end_inset
+
+.
+ Otherwise,
+ we will use whatever algebra makes sense.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ would be the probability measure.
+\end_layout
+
+\begin_layout Standard
+Usually,
+ we will have 
+\begin_inset Formula $\Omega=\mathbb{N}$
+\end_inset
+
+,
+ where we can use the power set,
+ and when 
+\begin_inset Formula $\Omega=\mathbb{R}$
+\end_inset
+
+,
+ we will use the Borel measure.
+\end_layout
+
+\begin_layout Subsection
+Random Variables
+\end_layout
+
+\begin_layout Standard
+We are interested in functions 
+\begin_inset Formula $X:\Omega\to\mathbb{R}$
+\end_inset
+
+,
+ because we mostly count things,
+ although in general we could replace 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ with other spaces that are measurable.
+\end_layout
+
+\begin_layout Standard
+We call 
+\begin_inset Formula $X$
+\end_inset
+
+ a 
+\emph on
+random variable
+\emph default
+ if for any 
+\begin_inset Formula $I$
+\end_inset
+
+ open in 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $X^{-1}\text{\left(I\right)\ensuremath{\in}\ensuremath{\sigma}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ are random variables,
+ 
+\begin_inset Formula $X=Y$
+\end_inset
+
+ will denote functional equivalence,
+ and 
+\begin_inset Formula $X\overset{l}{=}Y$
+\end_inset
+
+ will denote equivalence 
+\emph on
+by law
+\emph default
+,
+ which is defined as:
+\begin_inset Formula 
+\[
+X\overset{l}{=}Y\Leftrightarrow\forall A\in\sigma\quad\mathbb{P}\left[X\left(A\right)\subset I\right]=\mathbb{P}\left[Y\left(A\right)\subset I\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Moments
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+probability distribution function of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\emph default
+ (its PDF),
+ denoted as 
+\begin_inset Formula $p_{X}$
+\end_inset
+
+ can be given as:
+\begin_inset Formula 
+\[
+p_{X}\left(s\right)=\mathbb{P}\left[X=s\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which for discrete random variables will be 
+\begin_inset Formula $p_{n}$
+\end_inset
+
+ as a series,
+ and we'll hide 
+\begin_inset Formula $X$
+\end_inset
+
+ to make it simpler to write.
+\end_layout
+
+\begin_layout Standard
+For a continuous variable we would use the CDF 
+\begin_inset Formula $\mathbb{P}\left[X\leq s\right]$
+\end_inset
+
+,
+ and use its differential measure.
+\end_layout
+
+\begin_layout Standard
+The average,
+ or expectation of a random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{X}=\mathbb{E}\left[X\right]=\int p_{X}\left(s\right)sds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can have other random variables by setting functions over random variables,
+ and then:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\overline{f\left(X\right)}=\mathbb{E}\left[f\left(X\right)\right]=\int f\left(s\right)p_{X}\left(s\right)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+
+\begin_inset Formula $n$
+\end_inset
+
+-th moment
+\emph default
+ can be similarly written as:
+\begin_inset Formula 
+\[
+M_{n}\left(X\right)=\mathbb{E}\left[X^{n}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+
+\begin_inset Formula $n$
+\end_inset
+
+-th central moment
+\emph default
+ can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{n}\left(X\right)=\mathbb{E}\left[\left(X-\bar{X}\right)^{n}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first central moment is just 0,
+ and the second is the 
+\emph on
+variance
+\emph default
+ 
+\begin_inset Formula $V\left[X\right]$
+\end_inset
+
+,
+ which has to do with how wide the distribution is.
+ The third,
+ called 
+\emph on
+skewness
+\emph default
+,
+ is the degree of how tilted the distribution is around its expected value.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+
+\begin_inset Formula $n$
+\end_inset
+
+-th factorial moment
+\emph default
+ can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{n}\left(X\right)=\mathbb{E}\left[\prod_{i=0}^{n-1}\left(X-i\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It will come in handy later in this course,
+ which is when we'll discuss it more.
+\end_layout
+
+\begin_layout Subsection*
+Theorem (which we don't prove here)
+\end_layout
+
+\begin_layout Standard
+If two random variables 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ have the same moments 
+\begin_inset Formula $\forall n\ M_{n}\left(X\right)=M_{n}\left(Y\right)$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $X\overset{l}{=}Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If we only had a finite set of equal moments,
+ we would have an infinite number of different distributions that fit,
+ which is a classic interpolation problem,
+ sometimes called the *hamburger problem*.
+\end_layout
+
+\begin_layout Subsection
+Random Processes
+\end_layout
+
+\begin_layout Standard
+Given an index set 
+\begin_inset Formula $I$
+\end_inset
+
+ with elements 
+\begin_inset Formula $i$
+\end_inset
+
+,
+ 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is a 
+\emph on
+random process
+\emph default
+ if for any 
+\begin_inset Formula $i\in I$
+\end_inset
+
+,
+ 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is a random variable.
+ The denotation seems confusing,
+ but it's better to keep it simple,
+ because we will have these all over the place.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $I$
+\end_inset
+
+ will usually be the generation number if we have discrete time,
+ so 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+,
+ or 
+\begin_inset Formula $\mathbb{R}^{+}$
+\end_inset
+
+ if we talk about an index of time for continuous processes.
+\end_layout
+
+\begin_layout Paragraph
+Distributions are not everything in processes.
+\end_layout
+
+\begin_layout Standard
+Often,
+ in random variables,
+ we really only care about equality by law,
+ because things that are similarly distributed are rather the same.
+\end_layout
+
+\begin_layout Standard
+In random processes,
+ we could have dependence,
+ which would ruin this,
+ as the game we play at stage 
+\begin_inset Formula $n$
+\end_inset
+
+ could very likely depend on the result at earlier stages.
+ In this case,
+ knowing the total distribution at stage 
+\begin_inset Formula $n$
+\end_inset
+
+ isn't enough,
+ because we care about its dependence with other stages,
+ so conditional probabilities matter.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+autocorrelation of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\emph default
+ is given by:
+\begin_inset Formula 
+\[
+\varphi_{X}\left(s,t\right)=\mathbb{E}\left[X_{s}X_{t}\right]-\mathbb{E}\left[X_{s}\right]\mathbb{E}\left[X_{t}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usually,
+ we care about how strong the correlation is depending on 
+\begin_inset Formula $s-t$
+\end_inset
+
+,
+ such that correlations drop off as 
+\begin_inset Formula $s-t$
+\end_inset
+
+ grows larger.
+\end_layout
+
+\begin_layout Standard
+This has connections with Ergodicity,
+ where taking ensemble averages is the same as taking samples from different far times.
+\end_layout
+
+\begin_layout Standard
+A random process 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ will be called a 
+\emph on
+time series
+\emph default
+ if 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $t_{n}\in\mathbb{R}^{+}$
+\end_inset
+
+and 
+\begin_inset Formula $\forall n\ t_{n}<t_{n+1}$
+\end_inset
+
+.
+ A time series would matter as the waiting time between events,
+ mostly.
+ We would care about the distribution of 
+\emph on
+dwell times 
+\emph default
+of 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\theta_{n}=t_{n+1}-t_{n}$
+\end_inset
+
+ a lot.
+ A second question would be how much time we must wait until the 
+\begin_inset Formula $n$
+\end_inset
+
+-th event,
+ which is simply 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Given a time series we can get the dwell times,
+ and given a series of positive random variables we can make them into a time series by adding them up.
+\end_layout
+
+\begin_layout Standard
+A time series (defined by dwell times 
+\begin_inset Formula $\theta_{n}$
+\end_inset
+
+,
+ because of the above equivalence) will be called a 
+\emph on
+renewal process
+\emph default
+ if 
+\begin_inset Formula $\left\{ \theta_{n}\right\} $
+\end_inset
+
+ are i.i.d.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+counter of a time series 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+
+\emph default
+ will be defined by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{s}=\max\left\{ n|t_{n}\leq s\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It just tells us how many events happened by time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ This is the inverse indexing of knowing when the 
+\begin_inset Formula $n$
+\end_inset
+
+-th event happened,
+ which is 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Markovian and Stationary Processes
+\end_layout
+
+\begin_layout Standard
+A Markovian process is a deep concept which takes its own course.
+ These are processes where we can actually solve things.
+\end_layout
+
+\begin_layout Standard
+A process 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ will be called a 
+\emph on
+Markov process
+\emph default
+ if for any 
+\begin_inset Formula $s>t>u$
+\end_inset
+
+,
+ 
+\begin_inset Formula $P\left(X_{s}=x|X_{t}=y\right)=P\left(X_{s}=x|X_{t}=y,X_{u}=z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This means that any knowledge we need is the newest information.
+ After we have new information,
+ we simply don't care what happened before.
+\end_layout
+
+\begin_layout Standard
+A non-Markovian process is for example,
+ a dead time system with paralysis,
+ since we need to know the last time we dropped.
+\end_layout
+
+\begin_layout Standard
+A process 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ will be called a 
+\emph on
+stationary process
+\emph default
+ if for any 
+\begin_inset Formula $s>t$
+\end_inset
+
+ we have 
+\begin_inset Formula $P\left(X_{s}=x|X_{t}=y\right)=F\left(x,y,s-t\right)$
+\end_inset
+
+.
+ This means that a stationary process is obviously markovian.
+\end_layout
+
+\begin_layout Standard
+Given a time series 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+,
+ and its counter 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+,
+ a function 
+\begin_inset Formula $\lambda:\mathbb{R}\to\mathbb{R}$
+\end_inset
+
+ will be called the 
+\emph on
+rate of 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+
+\emph default
+ if 
+\begin_inset Formula $\mathbb{P}\left[C_{t+\delta t}=C_{t}+1\right]=\lambda\left(t\right)dt+o\left(dt\right)$
+\end_inset
+
+,
+ in the sense that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{\delta t\to0}\frac{\mathbb{P}\left[C_{t+\delta t}=C_{t}+1\right]}{\lambda\left(t\right)dt}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A time series will be called 
+\emph on
+ageless
+\emph default
+ if its counter's rate is a constant function 
+\begin_inset Formula $\lambda\left(t\right)\equiv\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Theorem
+\end_layout
+
+\begin_layout Quote
+The dwell time for the first event in an ageless time series is an exponential random variable.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ be an ageless time series,
+ and therefore 
+\begin_inset Formula $t_{1}=\theta_{0}$
+\end_inset
+
+ is the first dwell time as well.
+ Define 
+\begin_inset Formula $F_{t}\left(s\right)\equiv\mathbb{P}\left[t\leq s\right]$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+F_{t}\left(s+dt\right)-F_{t} & =\mathbb{P}\left[t\in(s,s+\delta t]\right]=\left(1-F_{t}\left(s\right)\right)\mathbb{P}\left[C_{t+\delta t}=C_{t}+1\right]\\
+ & =\left(1-F_{t}\left(s\right)\right)\left(\lambda\delta t+o\left(\delta t\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+\frac{dF_{t}}{ds}\left(s\right)=\lambda\left(1-F_{t}\left(s\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solution to which,
+ given that 
+\begin_inset Formula $F_{t}\left(0\right)=0$
+\end_inset
+
+ since nothing can happen in no time,
+ exists and is unique (Poincare).
+ It just happens to be 
+\begin_inset Formula $F_{t}\left(s\right)=1-e^{-\lambda s}$
+\end_inset
+
+.
+ You can derive and check for yourself.
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $F$
+\end_inset
+
+ is the CDF of the first dwell time,
+ 
+\begin_inset Formula $t$
+\end_inset
+
+ is an exponential random variable by law.
+ 
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Probability Generating Function
+\end_layout
+
+\begin_layout Standard
+Given a random variable 
+\begin_inset Formula $X$
+\end_inset
+
+,
+ with values in 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+,
+ its 
+\emph on
+probability generating function
+\emph default
+ (PGF) is defined by 
+\begin_inset Formula $\mathbb{E}\left[x^{X}\right]$
+\end_inset
+
+.
+ We will denote it as 
+\begin_inset Formula $H\left(X\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+By definition,
+ 
+\begin_inset Formula $\mathbb{E}\left[x^{X}\right]=\sum p_{n}x^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The continuous version would be a transform,
+ kind of like Fourier analysis.
+\end_layout
+
+\begin_layout Subsubsection*
+Proposition
+\end_layout
+
+\begin_layout Quote
+The PGF is an analytic function over the unit circle (
+\begin_inset Formula $x<1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\left|x\right|\leq1$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\left|x^{n}\right|\leq1$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\left|x^{n}p_{n}\right|\leq p_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Obviously,
+ 
+\begin_inset Formula $\sum_{n=0}^{k}p_{n}$
+\end_inset
+
+ is monotonically increasing and bounded by 1,
+ and thus converges (to 1,
+ as a probability).
+ It is a Majorant for the PGF,
+ and therefore the PGF 
+\begin_inset Formula $\sum p_{n}x^{n}$
+\end_inset
+
+ converges uniformly over the unit circle (Weierstrass M-test).
+ 
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The function is analytic over the unit circle,
+ and therefore all its derivatives are defined.
+\end_layout
+
+\begin_layout Subsubsection*
+Proposition
+\end_layout
+
+\begin_layout Quote
+If 
+\begin_inset Formula $\lim_{x\to1}\frac{d^{n}H}{dx^{n}}\equiv\frac{d^{n}H}{dx^{n}}|_{x=1}$
+\end_inset
+
+ exists and is finite,
+ then 
+\begin_inset Formula $\frac{d^{n}H}{dx^{n}}|_{x=1}=F_{n}\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d^{n}H}{dx^{n}}|_{x=1}=\lim_{x\to1}\sum p_{n}\prod_{k=0}^{n-1}\left(n-k\right)x^{n-1}=\sum p_{n}\prod_{k=0}^{n-1}\left(n-k\right)\equiv F_{n}\left(X\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where inserting the derivatives into the sum uses our uniform convergence.
+ 
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where doesn't this work?
+ We play until we hit heads,
+ and we get money for 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of tails we get.
+ The probability to get 
+\begin_inset Formula $n$
+\end_inset
+
+ is 
+\begin_inset Formula $p_{n}=2^{-n}$
+\end_inset
+
+.
+ Thus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}\left[X\right]=\sum p_{n}2^{n}=\sum1=\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the PGF goes as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H\left(X\right)=\sum2^{-n}x^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But this has no derivative in 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Observation
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $H\left(x\right)$
+\end_inset
+
+ is analytic over the unit circle,
+ written as a power series 
+\begin_inset Formula $H\left(x\right)=\sum a_{n}x^{n}$
+\end_inset
+
+ with 
+\begin_inset Formula $a_{n}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum a_{n}=1$
+\end_inset
+
+,
+ then there is some random variable such that 
+\begin_inset Formula $H$
+\end_inset
+
+ is its PGF,
+ which is defined by the distribution 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Denotation
+\end_layout
+
+\begin_layout Standard
+We denote the coefficient of 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ in a McLauren power series of 
+\begin_inset Formula $H$
+\end_inset
+
+ as 
+\begin_inset Formula $\left[H\left(X\right)\right]_{n}=\sum_{\sum n_{j}=n}\prod_{i=1}^{j}a_{n_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Corollary
+\end_layout
+
+\begin_layout Quote
+If 
+\begin_inset Formula $n\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $H\left(X\right)$
+\end_inset
+
+ is a PGF,
+ then 
+\begin_inset Formula $H^{n}\left(X\right)$
+\end_inset
+
+ is a PGF.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H^{n}\left(X\right)$
+\end_inset
+
+ is analytic by composition.
+ 
+\begin_inset Formula $H^{n}\left(1\right)=1=\sum b_{n}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $b_{n}>0$
+\end_inset
+
+ since it is simply given as multiplications of 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ which are all positive.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $H^{n}\left(X\right)\Rightarrow\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ which are i.i.d with 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+24.3.2025
+\end_layout
+
+\begin_layout Subsection
+Some more preparation
+\end_layout
+
+\begin_layout Standard
+We are almost getting to what a branching process is!
+ We dealt with the PGF last time,
+ and it's going to take us far.
+\end_layout
+
+\begin_layout Standard
+Reminder:
+ If 
+\begin_inset Formula $X:\mathbb{N\to\mathbb{R}}$
+\end_inset
+
+ is a random variable,
+ we define:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{X}\left(x\right)=\mathbb{E}\left[x^{X}\right]=\sum_{n}p_{n}x^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Proposition
+\end_layout
+
+\begin_layout Quote
+If 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ are independent,
+ then 
+\begin_inset Formula 
+\[
+H_{X+Y}\left(x\right)=H_{x}(x)H_{Y}(x)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote 
+\begin_inset Formula $a_{n}=\mathbb{P}\left[X=n\right],b_{n}=\mathbb{P}\left[Y=n\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{P}\left[x+y=n\right]=\sum_{k=0}^{n}\mathbb{P}\left[X=k\right]\mathbb{P}\left[Y=n-k\right]=\sum_{k=0}^{n}a_{k}b_{n-k}=\left[H_{X}\left(x\right)H_{Y}\left(x\right)\right]_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A different proof,
+ which is even shorter,
+ is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{X+Y}\left(x\right)=\mathbb{E}\left[x^{X+Y}\right]=\mathbb{E}\left[x^{X}x^{Y}\right]=\mathbb{E}\left[x^{X}\right]\mathbb{E}\left[x^{Y}\right]=H_{X}\left(x\right)H_{Y}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ is an exponential random variable with parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbb{P}\left[x\leq t\right]=\int_{0}^{t}\lambda e^{-\lambda s}ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is an independent exponential random variable with parameter 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+,
+ then:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\min\left(X,Y\right)\sim Exp\left(\lambda+\Lambda\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can be proven graphically.
+ Take a square of in an 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ plane,
+ where they are both less than some 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The space that excludes the opposite square in that half place across from 
+\begin_inset Formula $\left(t,t\right)$
+\end_inset
+
+ is where the minimum is under 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ This can be seen in the following graphic image of the integration range:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fill[blue!20] (2,2) rectangle (10,10);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw (0,
+ 0) -- (10,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw (0,
+ 0) -- (0,
+ 10);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[blue!80,
+ dashed] (0,
+ 2) -- (10,
+ 2);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[blue!80,
+ dashed] (2,
+ 0) -- (2,
+ 10);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node[below] at (2,2) {$(t,t)$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{P}\left[\min\left(X,Y\right)\leq t\right]=1-\iint_{\mathbb{R}^{2+}\backslash D}\lambda\Lambda e^{-\lambda s}e^{-\Lambda\omega}dsd\omega=1-\int_{t}^{\infty}ds\int_{t}^{\infty}\lambda\Lambda e^{-\lambda s}e^{-\Lambda\omega}d\omega=1-e^{-\left(\lambda+\Lambda\right)t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore its CDF is that of a random exponential variable with parameter 
+\begin_inset Formula $\lambda+\Lambda$
+\end_inset
+
+.
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ be random variables.
+ The law of dependent probability is just:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}\left[X|Y=y\right]=\sum\mathbb{P}\left[X=n|Y=y\right]n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mishpat Hahachlaka (the law of total expectation) says that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\mathbb{E}\left[X|Y\right]\right]=\mathbb{E}\left[X\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a form of Fubini's theorem,
+ obviously,
+ that we can take the integral in whichever order we like.
+\end_layout
+
+\begin_layout Standard
+The law of total variance says that:
+\end_layout
+
+\begin_layout Standard
+We need of course for the expectation and variance to both exist,
+ for this to make sense.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left[X\right]=\mathbb{E}\left[V\left[X|Y\right]\right]+V\left[\mathbb{E}\left[X|Y\right]\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And NOW,
+ we can finally get to branching processes,
+ but we'll start with Galton-Watson Trees,
+ even though we won't actually use them much as a formalism.
+\end_layout
+
+\begin_layout Subsection
+Galton-Watson Trees
+\end_layout
+
+\begin_layout Standard
+They were an economist and a mathmatician who tried to figure out why the number of different noble family names was dropping off.
+\end_layout
+
+\begin_layout Standard
+We follow a series 
+\begin_inset Formula $G_{n}$
+\end_inset
+
+ of trees in the graph theory sense 
+\begin_inset Formula $G_{n}=\left(P_{n},V_{n}\right)$
+\end_inset
+
+,
+ and a color function 
+\begin_inset Formula $f_{n}:P_{n}\to\left\{ 0,1\right\} $
+\end_inset
+
+.
+ 1 marks a 
+\emph on
+living
+\emph default
+ node,
+ and 0 a dead node We always take 
+\begin_inset Formula $G_{1}=\left(\left\{ p_{0}\right\} ,\phi\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $f_{1}\left(p_{0}\right)=1$
+\end_inset
+
+.
+ At any stage in the series we sample the number of new nodes and edges we will introduce for each node in 
+\begin_inset Formula $f_{n}^{-1}\left(1\right)$
+\end_inset
+
+,
+ and we add those as leafs.
+ We set 
+\begin_inset Formula $f_{n}^{-1}\left(1\right)=\left\{ p|p\in P_{n}\backslash P_{n-1}\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We still need to define how we sample the new progeny,
+ of course,
+ for this to be complete.
+\end_layout
+
+\begin_layout Standard
+The series 
+\begin_inset Formula $G_{n}$
+\end_inset
+
+ will be defined by the series of distributions 
+\begin_inset Formula $\left\{ \nu_{n}\left(k\right)\right\} $
+\end_inset
+
+ where 
+\begin_inset Formula $\nu_{n}\left(k\right)=\mathbb{P}\left[\text{Getting }k\text{ progeny for any live node in }G_{n}\right]$
+\end_inset
+
+.
+ We can have this distribution depend on the size of 
+\begin_inset Formula $f_{n}^{-1}\left(1\right)$
+\end_inset
+
+.
+ We won't consider non-Markovian cases in this course.
+\end_layout
+
+\begin_layout Standard
+We move on to a modern definition that is more common.
+\end_layout
+
+\begin_layout Subsection
+Branching Processes (Finally!)
+\end_layout
+
+\begin_layout Standard
+A random process 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ will be called a 
+\emph on
+Discrete Branching Process
+\emph default
+ if there exist random variables 
+\begin_inset Formula $\xi_{i,n}$
+\end_inset
+
+ that give values in 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+,
+ which are all i.i.d,
+ such that:
+\begin_inset Formula 
+\[
+X_{n+1}=\sum_{i=1}^{X_{n}}\xi_{i,n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A random process 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+ will be called a 
+\emph on
+Branching Process with Immigration
+\emph default
+ if it follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{n+1}=\sum_{i=1}^{X_{n}}\xi_{i,n}+I_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $I_{n}$
+\end_inset
+
+ is some random variable with values in 
+\begin_inset Formula $\mathbb{Z}$
+\end_inset
+
+,
+ but limited to not causing a negative 
+\begin_inset Formula $X_{n+1}$
+\end_inset
+
+,
+ to avoid summing over negative populations.
+\end_layout
+
+\begin_layout Standard
+A discrete branching process will be called 
+\emph on
+stationary
+\emph default
+ if 
+\begin_inset Formula $\xi_{i,n}$
+\end_inset
+
+ are i.i.d for all 
+\begin_inset Formula $n$
+\end_inset
+
+,
+ so they can be written as 
+\begin_inset Formula $\xi_{i,n}\sim\xi$
+\end_inset
+
+.
+ Specifically,
+ they do not depend on the population size 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+,
+ nor 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The dynamics is then dependent only on a single law 
+\begin_inset Formula $\xi$
+\end_inset
+
+,
+ with a probability vector 
+\begin_inset Formula $\mathbb{P}\left[\xi=n\right]=p_{n}$
+\end_inset
+
+.
+ If we have immigration,
+ we also demand 
+\begin_inset Formula $I_{n}\sim I$
+\end_inset
+
+ be i.i.d.
+\end_layout
+
+\begin_layout Subsection*
+The Microbe Problem
+\end_layout
+
+\begin_layout Standard
+We start with an initial population 
+\begin_inset Formula $n_{0}=1$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $X_{0}=1$
+\end_inset
+
+ with probability 1).
+ With probability 
+\begin_inset Formula $p$
+\end_inset
+
+ it will mitosis (become 2),
+ with 
+\begin_inset Formula $1-p$
+\end_inset
+
+ it will die.
+\end_layout
+
+\begin_layout Standard
+What is the distribution of the number of microbes in generation 
+\begin_inset Formula $n$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+We define 
+\begin_inset Formula $Q\left(z\right)=\left(1-p\right)+pz^{2}$
+\end_inset
+
+,
+ which is the PGF for the number of progeny of a single microbe.
+ We denote the compunding of a function 
+\begin_inset Formula $Q$
+\end_inset
+
+ on itself 
+\begin_inset Formula $k$
+\end_inset
+
+ times as 
+\begin_inset Formula $Q^{\left[k\right]}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We denote 
+\begin_inset Formula $H_{n}\left(x\right)$
+\end_inset
+
+ as the PGF for the 
+\begin_inset Formula $n$
+\end_inset
+
+-th generation.
+ 
+\begin_inset Formula $H_{0}\left(x\right)=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{n}\left(x\right)=\sum a_{n,k}x^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By definition.
+\end_layout
+
+\begin_layout Standard
+We recursively know that,
+ by the law of total probability based on what happened in generation 1:
+\begin_inset Formula 
+\begin{align*}
+a_{n,k} & =\mathbb{P}\left[k\text{ in generation }n|\text{mitosis}\right]p+\mathbb{P}\left[k\text{ in generation }n|death\right]\left(1-p\right)=\\
+ & =p\sum_{j=0}^{k}a_{n-1,j}a_{n-1,k-j}+\delta_{0,k}\left(1-p\right)\\
+ & =p\left[H_{n-1}^{2}\left(x\right)\right]_{k}++\delta_{0,k}\left(1-p\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We multiply by 
+\begin_inset Formula $x^{k}$
+\end_inset
+
+ and sum over them:
+\begin_inset Formula 
+\[
+H_{n}\left(x\right)=pH_{n-1}^{2}\left(x\right)+\left(1-p\right)=Q\left(H_{n-1}\left(x\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+since in the first generation we either die off to 0 and stay there,
+ or we have two individuals that need to compound in 
+\begin_inset Formula $n-1$
+\end_inset
+
+ generations.
+\begin_inset Formula 
+\[
+H_{n}\left(x\right)=Q^{\left[n\right]}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\begin{align*}
+H_{0} & =x\\
+H_{1} & =px^{2}+1-p\\
+H_{2} & =p^{3}x^{4}+2p^{2}\left(1-p\right)x^{2}+p\left(1-p\right)^{2}+\left(1-p\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And so on and so forth.
+\end_layout
+
+\begin_layout Standard
+What is the expectation and variance?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M_{1}\left(n\right)=\mathbb{E}\left[X_{n}\right]=\frac{dH_{n}}{dx}|_{1}=\frac{dH_{n}}{dH_{n-1}}\frac{dH_{n-1}}{dx}|_{1}=2pH_{n-1}|_{1}\mathbb{E}\left[H_{n-1}\right]=2pM_{1}\left(n-1\right)=\left(2p\right)^{n}1=\left(2p\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can divide this into 3 cases,
+ based on the ordering of 
+\begin_inset Formula $2p$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+,
+ into subcritical,
+ critical and supercritical regimes 
+\begin_inset Formula $M_{1}\left(n\right)\underset{n\to\infty}{\to}\begin{cases}
+0 & 2p<1\\
+n_{0} & 2p=1\\
+\infty & 2p>1
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly,
+ we can do the variance:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+F_{2}\left(n\right) & =V\left(X_{n}\right)=\frac{d^{2}H_{n}}{dx^{2}}|_{1}=\left[Q''\left(H_{n-1}\right)\left(H_{n-1}^{'}\right)^{2}+Q'\left(H_{n-1}\right)H_{n-1}^{''}\right]_{1}=2pM_{1}^{2}\left(n-1\right)+2pF_{2}\left(n-1\right)\\
+ & =2p\left(2p\right)^{2\left(n-1\right)}+2pF_{2}\left(n-1\right)=\left(2p\right)^{2n-1}+2pF_{2}\left(n-1\right)=2pF_{2}\left(n-1\right)+\frac{1}{2p}\left(\left(2p\right)^{2}\right)^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is an inhomogeneous recursion relation of the form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{2}\left(n\right)=F_{2,h}\left(n\right)+F_{2,p}\left(n\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F_{2,h}\left(n\right)=2pF_{2,h}\left(n-1\right)\Rightarrow F_{2,h}=C\left(2p\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Reminder,
+ generally the particular solution of the equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{n}=qa_{n-1}+\gamma^{n}A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is of the form 
+\begin_inset Formula $a_{n,p}=B\gamma^{n}$
+\end_inset
+
+ unless 
+\begin_inset Formula $\gamma=q$
+\end_inset
+
+,
+ in which case 
+\begin_inset Formula $a_{n,p}=Bn\gamma^{n}$
+\end_inset
+
+.
+ Thus,
+ for 
+\begin_inset Formula $2p\neq1$
+\end_inset
+
+,
+ we get:
+\begin_inset Formula 
+\[
+F_{2,p}\left(n\right)=B\left[\left(2p\right)^{2}\right]^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $2p=1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $2p=\left(2p\right)^{2}$
+\end_inset
+
+ and we need the other particular solution,
+ and we get:
+\begin_inset Formula 
+\[
+F_{2,p}\left(n\right)=Bn
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which results in a particular solution that is solved to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Bn=B\left(n-1\right)+1\Rightarrow B=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+F_{2}\left(n\right)=C+n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ comes from boundary conditions,
+ so for our case 
+\begin_inset Formula $C=0$
+\end_inset
+
+,
+ because 
+\begin_inset Formula $F_{2}\left(0\right)=\mathbb{E}\left[X_{n}\left(X_{n}-1\right)\right]=\mathbb{E}\left[X_{n}^{2}\right]-1=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+F_{2}\left(n\right)=n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The variance is simply:
+\begin_inset Formula 
+\[
+V\left(X_{n}\right)=\mathbb{E}\left[X_{n}^{2}\right]-\mathbb{E}^{2}\left[X_{n}\right]=n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the irregular case where the mean does not actually describe a likely case of the population.
+ There will be many populations that grow and multiple populations that die off,
+ and they cancel our 
+\series bold
+on average
+\series default
+,
+ but the behavior of the population is a cone that starts at 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ and moves up or down with a random walk.
+\end_layout
+
+\begin_layout Subsection
+Generalized Microbe Problem
+\end_layout
+
+\begin_layout Standard
+Now,
+ when we mitosis,
+ we have a probability distribution for our progeny,
+ which we will name 
+\emph on
+multiplicity
+\emph default
+,
+ and mark it 
+\begin_inset Formula $\left\{ p_{\nu}\left(n\right)\right\} _{n=0}^{\infty}$
+\end_inset
+
+.
+ We assume that all its moments exist and are finite.
+ Death is now a part of life,
+ such that mitosis to 0 is death.
+\end_layout
+
+\begin_layout Standard
+We still have,
+ in the exact same way:
+\begin_inset Formula 
+\[
+a_{n}\left(k\right)=\delta_{k,0}p_{\nu}\left(0\right)+\sum_{l=0}^{\infty}p_{\nu}\left(l\right)\sum_{\sum_{j=1}^{l}k_{j}=k}\prod_{j=0}^{l}a_{n-1}\left(k_{j}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{n}\left(k\right)=\delta_{k,0}p_{\nu}\left(0\right)+\sum_{l=0}^{\infty}p_{\nu}\left(l\right)\left[H_{n-1}^{l}\right]_{k}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+H_{n}\left(x\right)=Q^{\left[n\right]}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the new multiplicity PGF.
+\end_layout
+
+\begin_layout Standard
+We still get,
+ because we never used anything comples:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M_{1}\left(n\right)=\left(\sum\nu p_{\nu}\right)M_{1}\left(n-1\right)\equiv\bar{\nu}M_{1}\left(n-1\right)=\overline{\nu}^{n}n_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we still get the same criticality behavior,
+ based on the sign of 
+\begin_inset Formula $\overline{\nu}-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Definition
+\end_layout
+
+\begin_layout Standard
+We call a stationary branching process 
+\emph on
+subcritical,
+ critical and supercritical
+\emph default
+ based on 
+\begin_inset Formula $\overline{\nu}$
+\end_inset
+
+ being less than,
+ equal or greater than 1.
+\end_layout
+
+\begin_layout Section
+31.3.2025
+\end_layout
+
+\begin_layout Quote
+I did not attend this lecture,
+ but rather wrote this off of Tomer's notes.
+ Thanks,
+ Tomer!
+\end_layout
+
+\begin_layout Standard
+Last time we studied stationary branching processes,
+ which are uniquely defined by their multiplicity 
+\begin_inset Formula $\left\{ p_{\nu}\left(n\right)\right\} _{n=0}^{\infty}$
+\end_inset
+
+.
+ We saw that for an initial population 
+\begin_inset Formula $n_{0}=1$
+\end_inset
+
+,
+ the PGF for the population at generation 
+\begin_inset Formula $n$
+\end_inset
+
+ was given recursively by:
+\begin_inset Formula 
+\[
+g_{n+1}\left(x\right)=Q\left(g_{n}\left(x\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the PGF for the multiplicity.
+\end_layout
+
+\begin_layout Standard
+We also saw that 
+\begin_inset Formula $\mathbb{E}\left[X_{n}\right]=\overline{\nu}^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let us now compute the variance.
+ For the first moment we had:
+\begin_inset Formula 
+\[
+\frac{dg_{n+1}}{dx}\left(x\right)=\frac{d}{dx}\left[\sum p_{\nu,k}g_{n}^{k}\left(x\right)\right]=Q'\left(g_{n}\left(x\right)\right)g_{n}'\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus
+\begin_inset Formula 
+\[
+\frac{d^{2}g_{n+1}}{dx^{2}}\left(x\right)=\frac{d}{dx}\left[Q'\left(g_{n}\left(x\right)\right)g_{n}'\left(x\right)\right]=Q''\left(g_{n}\left(x\right)\right)\left[g_{n}'\left(x\right)\right]^{2}+Q'\left(g_{n}\left(x\right)\right)g_{n}''\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setting 
+\begin_inset Formula $x=1$
+\end_inset
+
+ we get:
+\begin_inset Formula 
+\[
+F_{2}\left(n+1\right)=\overline{\nu\left(\nu-1\right)}M_{1}^{2}\left(n\right)+\overline{\nu}F_{2}\left(n\right)=\overline{\nu\left(\nu-1\right)}\overline{\nu}^{2n}+\overline{\nu}F_{2}\left(n\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\overline{\nu}\neq1$
+\end_inset
+
+ we solve the homogeneous and particular solutions:
+\begin_inset Formula 
+\[
+a_{h}\left(n\right)=\overline{\nu}^{n},\quad a_{p}\left(n\right)=A\overline{\nu}^{2n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solving for 
+\begin_inset Formula $A$
+\end_inset
+
+ we get:
+\begin_inset Formula 
+\[
+A\overline{\nu}^{2n+2}=A\overline{\nu}^{2n}+\overline{\nu\left(\nu-1\right)}\overline{\nu}^{2n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And thus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\overline{\nu}^{2}=A+\overline{\nu\left(\nu-1\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+A=\frac{\overline{\nu\left(\nu-1\right)}}{\overline{\nu}^{2}-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\overline{\nu}=1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $M_{1}\left(n\right)=1$
+\end_inset
+
+ and so:
+\begin_inset Formula 
+\[
+F_{2}\left(n+1\right)=F_{2}\left(n\right)+\overline{\nu\left(\nu-1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Again:
+\begin_inset Formula 
+\[
+a_{h}\left(n\right)=1,\quad a_{p}\left(n\right)=An
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which is solved for 
+\begin_inset Formula $A$
+\end_inset
+
+ similarly to be:
+\begin_inset Formula 
+\[
+A=\overline{\nu\left(\nu-1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which results in a simple form for 
+\begin_inset Formula $F_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+F_{2}\left(n\right)=C+n\overline{\nu\left(\nu-1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which,
+ when we translate to a variance would be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V\left[X_{n}\right]=\mathbb{E}\left[X_{n}^{2}\right]-\mathbb{E}^{2}\left[X_{n}\right]=\mathbb{E}\left[X_{n}^{2}\right]-1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F_{2}\left(n\right)=\mathbb{E}\left[X_{n}\left(X_{n}-1\right)\right]=\mathbb{E}\left[X_{n}^{2}\right]-\mathbb{E}\left[X_{n}\right]=\mathbb{E}\left[X_{n}^{2}\right]-1=V\left[X_{n}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And thus,
+ since
+\begin_inset Formula 
+\[
+V\left[X_{0}\right]=0\Rightarrow C=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So finally
+\begin_inset Formula 
+\[
+V\left[X_{n}\right]=n\overline{\nu\left(\nu-1\right)}=n\left(\overline{\nu^{2}}-1\right)=n\sigma^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the variance of the multiplicity.
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $p_{\nu,i}=\frac{1}{3}\sum_{i=0}^{2}\delta_{ij}p_{\nu,j}$
+\end_inset
+
+.
+ What is the criticality of the system?
+ What is 
+\begin_inset Formula $g_{2}$
+\end_inset
+
+ if 
+\begin_inset Formula $n_{0}=1$
+\end_inset
+
+?
+ What is 
+\begin_inset Formula $g_{2}$
+\end_inset
+
+ assuming 
+\begin_inset Formula $n_{0}=1000$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsubsection
+Criticality
+\begin_inset Formula 
+\[
+\overline{\nu}=\frac{1}{3}+2\frac{1}{3}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So it is critical.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Formula $g_{2},n_{0}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g_{0}\left(x\right)=x
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+g_{1}\left(x\right)=Q\left(g_{0}\left(x\right)\right)=Q\left(x\right)=\frac{1}{3}\left(1+x+x^{2}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+g_{2}\left(x\right)=\frac{1}{3}\left(1+g_{1}\left(x\right)+g_{1}^{2}\left(x\right)\right)=\frac{1}{3}\left(1+\frac{1}{3}\left(1+x+x^{2}\right)+\frac{1}{9}\left(1+x+x^{2}\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which you can simplify,
+ if you must.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Formula $g_{2},n_{0}=1000$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know that if 
+\begin_inset Formula $X,Y$
+\end_inset
+
+ are i.i.d.
+ random variables,
+ 
+\begin_inset Formula $g_{X+Y}=g_{X}g_{Y}$
+\end_inset
+
+,
+ and so 
+\begin_inset Formula $g_{\sum X_{i}}=\prod g_{X_{i}}$
+\end_inset
+
+ in general,
+ if 
+\begin_inset Formula $\left\{ X_{i}\right\} $
+\end_inset
+
+ are i.i.d.
+ random variables.
+ More specifically:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g_{\sum X_{i}}=g_{X_{1}}^{n_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And thus:
+\begin_inset Formula 
+\[
+g_{n_{0}=1000}=\left[\frac{1}{3}\left(1+\frac{1}{3}\left(1+x+x^{2}\right)+\frac{1}{9}\left(1+x+x^{2}\right)^{2}\right)\right]^{1000}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Stationary branching processes with immigration
+\begin_inset Formula 
+\[
+X_{n+1}=\sum_{i=1}^{X_{n}}\xi_{i,n}+I_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote the multiplicity of 
+\begin_inset Formula $\xi$
+\end_inset
+
+ as 
+\begin_inset Formula $p_{\nu}$
+\end_inset
+
+,
+ as before,
+ and that of 
+\begin_inset Formula $I$
+\end_inset
+
+ as 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+.
+ The PGFs are denoted as 
+\begin_inset Formula $Q,I$
+\end_inset
+
+ respectively.
+ We denote the moments of 
+\begin_inset Formula $I$
+\end_inset
+
+ with symbols such as 
+\begin_inset Formula $\overline{\nu}_{i}$
+\end_inset
+
+ for the first.
+\end_layout
+
+\begin_layout Subsection*
+Theorem
+\end_layout
+
+\begin_layout Quote
+Denote 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ as the PGF of the 
+\begin_inset Formula $n$
+\end_inset
+
+-th generation,
+ given 
+\begin_inset Formula $X_{0}=1$
+\end_inset
+
+.
+ Therefore:
+\begin_inset Formula 
+\[
+g_{n+1}\left(x\right)=g_{n}\left(Q\left(x\right)\right)I\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Proof
+\end_layout
+
+\begin_layout Standard
+By definition:
+\begin_inset Formula 
+\[
+g_{n+1}\left(x\right)=\mathbb{E}\left[x^{X_{n+1}}\right]=\mathbb{E}\left[x^{\sum_{i=1}^{X_{n}}\xi_{i,n}+I_{n}}\right]=\mathbb{E}\left[x^{\sum_{i=1}^{X_{n}}\xi_{i,n}}x^{I_{n}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+using the law of total probability:
+\begin_inset Formula 
+\begin{align*}
+g_{n+1}\left(x\right) & =\mathbb{E}\left[\mathbb{E}\left[x^{\sum_{i=1}^{X_{n}}\xi_{i,n}}x^{I_{n}}|X_{n}\right]\right]=\mathbb{E}\left[\mathbb{E}\left[x^{\sum_{i=1}^{X_{n}}\xi_{i,n}}\right]|X_{n}\right]\mathbb{E}\left[x^{I_{n}}\right]\\
+ & =\mathbb{E}\left[Q^{X_{n}}\left(x\right)\right]\mathbb{E}\left[x^{I_{n}}\right]=g_{n}\left(Q\left(x\right)\right)I\left(x\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Corollary
+\end_layout
+
+\begin_layout Quote
+\begin_inset Formula 
+\[
+M_{1}\left(n\right)=\begin{cases}
+\left(1-\frac{\overline{\nu_{i}}}{1-\overline{\nu}}\right)\overline{\nu}^{n}+\frac{\overline{\nu_{i}}}{1-\overline{\nu}} & \overline{\nu}\neq1\\
+1+n\overline{\nu_{i}} & \nu=1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Proof
+\begin_inset Formula 
+\[
+\frac{dg_{n+1}}{dx}=g_{n}'\left(Q\right)Q'I+g_{n}\left(Q\right)I'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Set 
+\begin_inset Formula $x=1$
+\end_inset
+
+ and we get:
+\begin_inset Formula 
+\[
+M_{1}\left(n+1\right)=M_{1}\left(n\right)\overline{\nu}+\overline{\nu_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\overline{\nu}\neq1$
+\end_inset
+
+,
+ we solve the homogeneous and particular parts.
+ The homogeneous is still 
+\begin_inset Formula $C\overline{\nu}^{n}$
+\end_inset
+
+.
+ The particular solution we assume constant at 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ which solves for 
+\begin_inset Formula $A=\frac{\overline{\nu_{i}}}{1-\overline{\nu}}$
+\end_inset
+
+.
+ We use the initial condition to be 
+\begin_inset Formula $1$
+\end_inset
+
+,
+ to get the solution above.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\overline{\nu}=1$
+\end_inset
+
+,
+ 
+\begin_inset Formula $M_{1}\left(n+1\right)=M_{1}\left(n\right)+\overline{\nu_{i}}$
+\end_inset
+
+,
+ so the homogeneous solution is constant this time around.
+ The particular solution we assume to be 
+\begin_inset Formula $An$
+\end_inset
+
+,
+ which solves as 
+\begin_inset Formula $A=\overline{\nu_{i}}$
+\end_inset
+
+.
+ With the initial condition,
+ we get the solution above.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
