@@ -40,7 +40,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -67,6 +67,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -92,7 +96,7 @@
 
 \begin_body
 
-\begin_layout Part
+\begin_layout Part*
 Branching Processes
 \end_layout
 
@@ -1356,6 +1360,16 @@ This can be proven graphically.
 
 .
  This can be seen in the following graphic image of the integration range:
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Thanks to Aviv Barnea for the tikz code for this image
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2768,6 +2782,14 @@ M_{1}\left(n\right)=\begin{cases}
 
 \end_layout
 
+\begin_layout Quote
+This behavior is expected:
+ Exponential growth or decay,
+ and a linear growth for critical cases,
+ as the system's expectation meets the deterministic case.
+ The exponential case is also always larger than a population with no immigration.
+\end_layout
+
 \begin_layout Paragraph
 Proof
 \begin_inset Formula 
@@ -2857,6 +2879,589 @@ If
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+7.4.2025
+\end_layout
+
+\begin_layout Subsection
+The original Galton-Watson paper
+\end_layout
+
+\begin_layout Standard
+Today we will finish our discussion on discrete branching processes.
+ We will discuss the original Galton-Watson paper.
+\end_layout
+
+\begin_layout Standard
+Let a discrete,
+ stationary branching process 
+\begin_inset Formula $X_{n}$
+\end_inset
+
+,
+ with multiplicity 
+\begin_inset Formula $\left\{ p_{\nu}\right\} _{\nu=0}^{\infty}$
+\end_inset
+
+.
+ The extinction probability,
+ 
+\begin_inset Formula $\mathbb{P}\left[X_{n}=0\right]$
+\end_inset
+
+,
+ we denote as 
+\begin_inset Formula $p_{n}\left(0\right)$
+\end_inset
+
+,
+ just to confuse you with all these 
+\begin_inset Formula $p$
+\end_inset
+
+s.
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $p_{n}\left(0\right)\leq1$
+\end_inset
+
+,
+ as a probability,
+ and with no immigration it is a sink case,
+ so 
+\begin_inset Formula $p_{n}\left(0\right)\leq p_{n+1}\left(0\right)$
+\end_inset
+
+.
+ Therefore as a bounded series that grows monotonically,
+ its limit exists and is finite.
+ We denote 
+\begin_inset Formula $\lim_{n\to\infty}p_{n}\left(0\right)\equiv p_{\infty}\left(0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We already saw that the PGF 
+\begin_inset Formula $H_{n+1}=Q\left(H_{n}\right)$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $H_{n}\left(0\right)=p_{n}\left(0\right)$
+\end_inset
+
+,
+ we can get a recursion relation for 
+\begin_inset Formula $H_{n}\left(0\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+p_{n+1}\left(0\right)=Q\left(p_{n}\left(0\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+ since the limit exists:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{\infty}\left(0\right)=Q\left(p_{\infty}\left(0\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We want the roots of 
+\begin_inset Formula $q\left(x\right)=Q\left(x\right)-x$
+\end_inset
+
+ in 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+.
+ Notice that 
+\begin_inset Formula $1$
+\end_inset
+
+ is always a solution to this equation,
+ because 
+\begin_inset Formula $Q$
+\end_inset
+
+ is a PGF.
+ At 
+\begin_inset Formula $x=0$
+\end_inset
+
+ this is always non-negative.
+\end_layout
+
+\begin_layout Standard
+We derive 
+\begin_inset Formula $q$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{dq}{dx}=\left(\sum_{n}p_{\nu,n}nx^{n-1}\right)-1\leq\left(\sum_{n}p_{\nu,n}n\right)-1=\overline{\nu}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This gives us two cases:
+\end_layout
+
+\begin_layout Enumerate
+Supercritical system,
+ 
+\begin_inset Formula $\overline{\nu}>1$
+\end_inset
+
+,
+ there can be additional roots in 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ except 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Basically,
+ we don't actually help in this case directly.
+\end_layout
+
+\begin_layout Enumerate
+Critical or subcritical system,
+ 
+\begin_inset Formula $\overline{\nu}\leq1$
+\end_inset
+
+,
+ there can only be one root,
+ because the function is strictly monotonically decreasing.
+ Since 
+\begin_inset Formula $p_{\infty}\left(0\right)=1$
+\end_inset
+
+ is a root,
+ it is the 
+\emph on
+only
+\emph default
+ root.
+ 
+\end_layout
+
+\begin_layout Standard
+With a population of size 1,
+ therefore if you are not supercritical,
+ you will go extinct with probability 1 at some point.
+ What happens if you start with a population of size 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+?
+ The PGF is simply the product of all contributions,
+ so the extinction probability is just 
+\begin_inset Formula $p_{\infty}^{n_{0}}\left(0\right)$
+\end_inset
+
+.
+ If you are critical,
+ remember that 
+\begin_inset Formula $\mathbb{E}\left[X_{n}\right]=n_{0}$
+\end_inset
+
+,
+ and by definition 
+\begin_inset Formula $\lim_{n\to\infty}\mathbb{E}\left[X_{n}\right]=n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This is confusing,
+ because we don't actually meet the expectation.
+ What really happens is that many chains will die out,
+ but some of them will be very large.
+ The fraction of surviving initial trees will decay,
+ even if the population is actually stable,
+ because the population will be dominated by the few lucky trees who survive.
+\end_layout
+
+\begin_layout Standard
+And that's the Galton-Watson result from their paper.
+\end_layout
+
+\begin_layout Subsection
+Continuous Branching Processes
+\end_layout
+
+\begin_layout Standard
+We are considering a discrete population in continuous time.
+ So far we used the generation system to define our dynamics.
+ We need to move on to dwell times that we previously mentioned.
+\end_layout
+
+\begin_layout Standard
+Now,
+ if we take our Galton-Watson tree,
+ we don't define the next generation for all items simultaneously.
+ Instead,
+ each individual has its own dwell time until it becomes inactive and creates progeny.
+ The problem we are going to encounter is that we want the dwell time and multiplicity of individuals to maybe depend on the current population.
+ Thus,
+ we would need to somehow update the dwell times of individuals and their multiplicity whenever another individual does anything.
+\end_layout
+
+\begin_layout Standard
+Let's try some naive ways to do it:
+\begin_inset Formula 
+\[
+X_{t+dt}=\sum_{i=1}^{X_{t}}\xi_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The problem is that we need to somehow make sure there are no additional contributions from progeny born in 
+\begin_inset Formula $\left[t,t+dt\right]$
+\end_inset
+
+.
+ This will fail as a definition.
+\end_layout
+
+\begin_layout Standard
+We start with the generation definition of 
+\begin_inset Formula $X_{n+1}=\sum_{i=1}^{X_{n}}\xi_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can define 
+\begin_inset Formula $Y_{t}=X_{n_{t}}$
+\end_inset
+
+ where 
+\begin_inset Formula $n_{t}$
+\end_inset
+
+ is a counter of a time series.
+ However,
+ we want the rate of events to increase with increasing population size,
+ so while this definition works,
+ it is rather unworkable for most applications.
+ So that's too naive too.
+\end_layout
+
+\begin_layout Paragraph*
+The actual definition we are going to use takes a lot of mathematical proofs to do,
+ and we're not going to do all of them.
+ We are going to wave our hands a bit,
+ bear with me.
+ If you want to know the details,
+ read the book,
+ I will put a link here.
+\end_layout
+
+\begin_layout Standard
+Given two random processes,
+ we want to define a stochastic integral.
+ Let 
+\begin_inset Formula $X_{t},w_{t}$
+\end_inset
+
+ be random processes,
+ and we want 
+\begin_inset Formula $\int_{a}^{t}X_{s}dw_{s}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let a partition 
+\begin_inset Formula $S=\left\{ t_{i}\right\} $
+\end_inset
+
+ of 
+\begin_inset Formula $\left[a,t\right]$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $ind\left(S\right)=\max\left\{ t_{i+1}-t_{i}\right\} $
+\end_inset
+
+.
+ We take the Riemann sum 
+\begin_inset Formula $I^{I}\left(S\right)=\sum_{i=1}^{n-1}X_{t_{i}}\left(w_{t_{i+1}}-w_{t_{i}}\right)$
+\end_inset
+
+.
+ This is a random variable,
+ and it would also differ if we take 
+\begin_inset Formula $X_{t_{i+1}}$
+\end_inset
+
+ there,
+ which is weird.
+ The stochastic integral would be:
+\begin_inset Formula 
+\[
+\int_{a}^{t}X_{s}dw_{s}=\lim_{Ind\left(S\right)\to0}I^{I}\left(s\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+What this requires is that 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ be a Martingale,
+ and that 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be not too awful.
+ Read the book for the details,
+ because like I mentioned,
+ stochastic integrals are a whole course to themselves.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $I^{I}\left(s\right)$
+\end_inset
+
+,
+ like we said,
+ is defined with 
+\begin_inset Formula $X_{t_{i}}$
+\end_inset
+
+ in the sum,
+ and is the Ito integral.
+ If we take 
+\begin_inset Formula $X_{\frac{t_{i+1}+t_{i}}{2}}$
+\end_inset
+
+,
+ we get the Stratonovich integral.
+ They are not the same.
+ We go with the Ito definition because the resulting process is a Martingale.
+ But again,
+ we don't actually explain any of this,
+ and you need to read the book (or I may take some notes of that book in an appendix to these notes when I do so myself).
+\end_layout
+
+\begin_layout Subsubsection
+Simple Example
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $w_{t}=t$
+\end_inset
+
+ be the deterministic time we are used to,
+ and 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be discrete.
+ In this case,
+ it is clear why the integral converges,
+ because it is simply the sum of the population so far.
+\end_layout
+
+\begin_layout Standard
+Our goal is to define the branching process,
+ where each individual has a reaction rate 
+\begin_inset Formula $\lambda_{\nu}\left(X_{t},t\right)$
+\end_inset
+
+ to branch in to 
+\begin_inset Formula $\nu$
+\end_inset
+
+ individuals.
+ This is the multiplicity analog from before,
+ where we combine both the number of progeny and the time rate of this type of effect.
+\end_layout
+
+\begin_layout Standard
+Therefore,
+ for each individual,
+ the probability for a reaction that creates 
+\begin_inset Formula $\nu$
+\end_inset
+
+ individuals in an interval 
+\begin_inset Formula $\left[t,t+dt\right]$
+\end_inset
+
+ is 
+\begin_inset Formula $\lambda_{\nu}\left(X_{t},t\right)dt+o\left(dt\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We want to look at 
+\begin_inset Formula $X_{t}-X_{0}$
+\end_inset
+
+.
+ We take some partition 
+\begin_inset Formula $S$
+\end_inset
+
+ as before of the time interval 
+\begin_inset Formula $\left[0,t\right]$
+\end_inset
+
+.
+ We can write:
+\begin_inset Formula 
+\[
+X_{t}-X_{0}=\sum_{i=1}^{n}\left(X_{t_{i}}-X_{t_{i-1}}\right)=\sum_{i=1}^{n}\sum_{\nu=0}^{\infty}\left(\nu-1\right)Y_{\nu}\left[X_{t_{i}}\lambda_{\nu}\left(X_{t_{i}},t_{i}\right)dt+o\left(dt\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $Y_{\nu}$
+\end_inset
+
+ are independent Poisson random variables.
+ This is because 
+\begin_inset Formula $Y_{\nu}$
+\end_inset
+
+ are the counters for the exponential events with rates 
+\begin_inset Formula $X_{t_{i}}\lambda_{\nu}\left(X_{t_{i}},t_{i}\right)$
+\end_inset
+
+,
+ so they count the number of events in which the population change is 
+\begin_inset Formula $\left(\nu-1\right)$
+\end_inset
+
+,
+ and we sum over all possible options.
+ The fact that we can do a sum over all possible options might demand something on the rates 
+\begin_inset Formula $\lambda_{\nu}$
+\end_inset
+
+ for this to exist,
+ but we're going to ignore that in this course for now.
+ Use finite progeny numbers if you're feeling dirty.
+\end_layout
+
+\begin_layout Standard
+We'll change the order of summation (again,
+ we're not explaining what must happen for this to work):
+\begin_inset Formula 
+\[
+X_{t}-X_{0}=\sum_{\nu=0}^{\infty}\left(\nu-1\right)\sum_{i=1}^{n}Y_{\nu}\left[X_{t_{i}}\lambda_{\nu}\left(X_{t_{i}},t_{i}\right)dt+o\left(dt\right)\right]=\sum_{\nu=0}^{\infty}\left(\nu-1\right)Y_{\nu}\left[\sum_{i=1}^{n}X_{t_{i}}\lambda_{\nu}\left(X_{t_{i}},t_{i}\right)dt+o\left(dt\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And now we can write:
+\begin_inset Formula 
+\[
+X_{t}-X_{0}=\sum_{\nu=0}^{\infty}\left(\nu-1\right)Y_{\nu}\left[\int_{0}^{t}X_{s}\lambda_{\nu}\left(X_{s},s\right)ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So now can define things.
+ 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ will be called a 
+\emph on
+continuous branching process
+\emph default
+ if there exist a series of 
+\series bold
+\bar under
+positive
+\series default
+\bar default
+ functions 
+\begin_inset Formula $f_{k}\left(x,t\right)$
+\end_inset
+
+ such that:
+\begin_inset Formula 
+\[
+X_{t}=X_{0}+\sum_{k}\left(k-1\right)Y_{k}\left[\int_{0}^{t}f_{k}\left(X_{s},s\right)ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For independent Poisson random variables 
+\begin_inset Formula $Y_{k}$
+\end_inset
+
+.
 \end_layout
 
 \end_body
