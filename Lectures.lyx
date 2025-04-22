@@ -1846,7 +1846,7 @@ We recursively know that,
 \begin{align*}
 a_{n,k} & =\mathbb{P}\left[k\text{ in generation }n|\text{mitosis}\right]p+\mathbb{P}\left[k\text{ in generation }n|death\right]\left(1-p\right)=\\
  & =p\sum_{j=0}^{k}a_{n-1,j}a_{n-1,k-j}+\delta_{0,k}\left(1-p\right)\\
- & =p\left[H_{n-1}^{2}\left(x\right)\right]_{k}++\delta_{0,k}\left(1-p\right)
+ & =p\left[H_{n-1}^{2}\left(x\right)\right]_{k}+\delta_{0,k}\left(1-p\right)
 \end{align*}
 
 \end_inset
@@ -3462,6 +3462,521 @@ For independent Poisson random variables
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+21.4.2025
+\end_layout
+
+\begin_layout Standard
+Last week was Passover,
+ and next week is M&C2025,
+ so we are sparsely having classes for now.
+\end_layout
+
+\begin_layout Standard
+We will also introduce diffusion approximations in this course because 2/3 students are doing this.
+\end_layout
+
+\begin_layout Standard
+We are changing the test at the end of the course to a home test.
+\end_layout
+
+\begin_layout Standard
+And now back to continuous branching processes.
+\end_layout
+
+\begin_layout Subsection
+The Master Equation
+\end_layout
+
+\begin_layout Standard
+We remind that a branching process is given by:
+\begin_inset Formula 
+\[
+X_{t}=X_{0}+\sum_{l=-1}^{N}lY_{l}\left[\int_{0}^{t}f_{l}\left(X_{s},s\right)ds\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we have this be a finite sum just because we don't want to deal with convergence because that's not the point here.
+\end_layout
+
+\begin_layout Standard
+The branching laws 
+\begin_inset Formula $f_{l}$
+\end_inset
+
+ are those who govern the distribution.
+\end_layout
+
+\begin_layout Standard
+We define 
+\begin_inset Formula $\lambda_{l}\left(X_{t},t\right)$
+\end_inset
+
+ as the rate per capita if 
+\begin_inset Formula $f_{l}\left(X_{t},t\right)=\lambda_{l}\left(X_{t},t\right)X_{t}+S_{l}\left(t\right)$
+\end_inset
+
+.
+ This should be taken as the rate per time for an individual in the population to undergo a reaction that yields an 
+\begin_inset Formula $l$
+\end_inset
+
+-change in the population,
+ in the short time frame 
+\begin_inset Formula $\left[t,t+dt\right]$
+\end_inset
+
+.
+ Therefore the probability is 
+\begin_inset Formula $\mathbb{P}\left[\text{one individual doing l-interaction in \left[t,t+dt\right]}\right]=\lambda_{l}\left(X_{t},t\right)dt+o\left(dt\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We now define,
+ for any 
+\begin_inset Formula $t_{2}>t_{1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+H\left(t_{1},t_{2},n,k\right)=\mathbb{P}\left[X_{t_{2}}=n|X_{t_{1}}=k\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The backward Master Equation is therefore (The complete probability theorem):
+\begin_inset Formula 
+\[
+\mathbb{P}\left[X_{t}=n\right]=\sum_{k}\mathbb{P}\left[X_{t-dt}=k\right]H\left(t-dt,t,n,k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The forward Master Equation is similarly:
+\begin_inset Formula 
+\[
+\mathbb{P}\left[X_{t}=n\right]=\sum_{k}\mathbb{P}\left[X_{dt}=k\right]H\left(dt,t,n,k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a stationary system,
+ where there is no direct dependence on the time,
+ 
+\begin_inset Formula $H\left(t_{1},t_{2},n,k\right)=H\left(t_{2}-t_{1},n,k\right)$
+\end_inset
+
+.
+ In that case,
+ we can write the backward equation as:
+\begin_inset Formula 
+\[
+\mathbb{P}\left[X_{t+dt}=n\right]=\sum_{k}\mathbb{P}\left[X_{t}=k\right]H\left(dt,n,k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the forward as:
+\begin_inset Formula 
+\[
+\mathbb{P}\left[X_{t+dt}=n\right]=\sum_{k}\mathbb{P}\left[X_{dt}=k\right]H\left(t,n,k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will denote 
+\begin_inset Formula $a_{n}\left(t\right)\equiv\mathbb{P}\left[X_{t}=n\right]$
+\end_inset
+
+,
+ as usual.
+ The backwards equation can be written as:
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=\sum_{k}a_{k}\left(t\right)H\left(dt,n,k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $H$
+\end_inset
+
+ can be written as:
+ 
+\begin_inset Formula $H\left(dt,n,k\right)=f\left(n,k\right)dt+o\left(dt^{2}\right)$
+\end_inset
+
+,
+ we get:
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=\sum_{k}a_{k}\left(t\right)f\left(n,k\right)dt+o\left(dt^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $f\left(n,n\right)=A+o\left(dt\right)$
+\end_inset
+
+,
+ we can make this into an ODE.
+\end_layout
+
+\begin_layout Subsubsection
+Constant per capita rates with no negative immigration
+\end_layout
+
+\begin_layout Standard
+Lets start with the case where the per-capita rates are constant,
+ so 
+\begin_inset Formula $f_{l}\left(X_{t}\right)=\lambda_{l}X_{t}+S_{l}$
+\end_inset
+
+,
+ where both 
+\begin_inset Formula $\lambda_{l},S_{l}$
+\end_inset
+
+ are constant.
+ We also demand that 
+\begin_inset Formula $S_{-1}=S_{0}=0$
+\end_inset
+
+ (no non-positive immigration).
+ The case of 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ is just not very important,
+ because it is a non-event.
+\end_layout
+
+\begin_layout Standard
+In this case:
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $n\neq k$
+\end_inset
+
+,
+ we can write:
+\begin_inset Formula 
+\[
+H\left(dt,n,k\right)=\mathbb{P}\left[\text{One event takes us from \ensuremath{k} to \ensuremath{n} in \ensuremath{dt}}\right]=S_{n-k}dt+\lambda_{n-k}kdt+o\left(dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $n=k$
+\end_inset
+
+,
+ we can also have no event:
+\begin_inset Formula 
+\[
+H\left(dt,n,n\right)=\cancelto{0}{\mathbb{P}\left[\text{Reaction of no change}\right]}+\mathbb{P}\left[\text{No event}\right]=1-\left(n\sum_{l=-1}^{N}\lambda_{l}-\sum_{l=1}^{N}S_{l}\right)dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote 
+\begin_inset Formula $\lambda=\sum_{l}\lambda_{l},S=\sum_{l}S_{l}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To make things simpler,
+ we assumed both 
+\begin_inset Formula $S_{0}=\lambda_{0}=0$
+\end_inset
+
+,
+ which dropped the first term
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=\sum_{k\neq n}a_{k}\left(t\right)\left(k\lambda_{n-k}+S_{n-k}\right)dt+a_{n}\left(t\right)\left(1-n\lambda-S\right)dt+o\left(dt^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And thus:
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)-a_{n}\left(t\right)=-\left(n\lambda+S\right)a_{n}\left(t\right)dt+\sum_{k\neq n}a_{k}\left(t\right)\left(k\lambda_{n-k}+S_{n-k}\right)dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And divide by 
+\begin_inset Formula $dt$
+\end_inset
+
+ and take the limit to get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{da_{n}}{dt}\left(t\right)=-\left(n\lambda+S\right)a_{n}\left(t\right)+\sum_{k\neq n}a_{k}\left(t\right)\left(k\lambda_{n-k}+S_{n-k}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is a linear set of ODEs,
+ which can be formulated with a matrix that has a sum over columns of 1.
+\end_layout
+
+\begin_layout Subsubsection
+Onto the PGF!
+\end_layout
+
+\begin_layout Standard
+We denote the PGF
+\begin_inset Formula 
+\[
+G\left(x,t\right)=\sum_{n=0}^{\infty}a_{n}\left(t\right)x^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We also mark the PGF of the immigration by 
+\begin_inset Formula $r\left(x\right)=\sum_{k=1}^{N}x^{k}S_{k}$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $Q\left(x\right)=\sum_{k=1}^{N}\lambda_{k}x^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We multiply the ODE by 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{da_{n}}{dt}x^{n}=-\left(\lambda n+S\right)a_{n}\left(t\right)x^{n}+\sum_{k\neq n}x^{n}a_{k}\left(t\right)\left(k\lambda_{n-k}+S_{n-k}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And sum over all possible values of 
+\begin_inset Formula $n$
+\end_inset
+
+ to get (since the convergence to 
+\begin_inset Formula $G$
+\end_inset
+
+ is uniform):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial G}{\partial t}\left(x,t\right) & =-\lambda x\sum_{n}nx^{n-1}a_{n}\left(t\right)-SG\left(x,t\right)+\sum_{n}\sum_{k\neq n}x^{k}a_{k}\left(t\right)\left(k\lambda_{n-k}x^{n-k}+S_{n-k}x^{n-k}\right)\\
+ & =-\lambda x\frac{\partial G}{\partial x}\left(x,t\right)-SG\left(x,t\right)+\sum_{n}\sum_{k}x^{k}a_{k}\left(t\right)S_{n-k}x^{n-k}+\sum_{n}\sum_{k\neq n}x^{k}a_{k}\left(t\right)k\lambda_{n-k}x^{n-k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The one before last is a multiplication of analytic functions (we added the 
+\begin_inset Formula $k=n$
+\end_inset
+
+ term since 
+\begin_inset Formula $S_{0}=0$
+\end_inset
+
+).
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}\left(x,t\right)=-\lambda x\frac{\partial G}{\partial x}\left(x,t\right)-SG\left(x,t\right)+G\left(x,t\right)r\left(x\right)+x\sum_{n}\sum_{k}x^{k-1}a_{k}\left(t\right)k\lambda_{n-k}x^{n-k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We do a similar thing with the last term,
+ except it is the partial derivative of 
+\begin_inset Formula $G$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}\left(x,t\right)=-\lambda x\frac{\partial G}{\partial x}\left(x,t\right)-SG\left(x,t\right)+G\left(x,t\right)r\left(x\right)+x\frac{\partial G}{\partial x}\left(x,t\right)Q\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To explain this more easily,
+ we can keep the 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ terms outside the convolution,
+ and remember that 
+\begin_inset Formula $ka_{k}$
+\end_inset
+
+ is the 
+\begin_inset Formula $k$
+\end_inset
+
+-th term in 
+\begin_inset Formula $x\frac{\partial G}{\partial x}$
+\end_inset
+
+,
+ and thus from the convolution we can tell what the terms are.
+\end_layout
+
+\begin_layout Standard
+It is often written as:
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}=x\frac{\partial G}{\partial x}\left(x,t\right)\left(Q\left(x\right)-\lambda\right)+G\left(x,t\right)\left(r\left(x\right)-S\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Let's do the equation for the first moment
+\end_layout
+
+\begin_layout Standard
+As usual,
+ 
+\begin_inset Formula $\mathbb{E}\left[\text{Population size}\right]=M_{1}=\frac{\partial G}{\partial x}\left(1,t\right)$
+\end_inset
+
+.
+ We can write an ODE for it:
+\begin_inset Formula 
+\[
+\frac{\partial^{2}G}{\partial t\partial x}\left(x,t\right)=\left(Q-\lambda\right)\left(\frac{\partial G}{\partial x}+x\frac{\partial^{2}G}{\partial x^{2}}\right)+x\frac{\partial G}{\partial x}\frac{dQ}{dx}+\frac{\partial G}{\partial x}\left(r-s\right)+G\frac{dr}{dx}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We set 
+\begin_inset Formula $x=1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{dM_{1}}{dt}=M_{1}\overline{\lambda_{r}}+\overline{S}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is just the deterministic equation,
+ if we had a constant reaction rate of the mean value and the immigration source was its mean constant.
 \end_layout
 
 \end_body
