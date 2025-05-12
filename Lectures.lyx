@@ -3979,5 +3979,485 @@ Which is just the deterministic equation,
  if we had a constant reaction rate of the mean value and the immigration source was its mean constant.
 \end_layout
 
+\begin_layout Section
+5.5.2025
+\end_layout
+
+\begin_layout Subsection
+Form of the PGF for a branching process with rates and immigration
+\end_layout
+
+\begin_layout Standard
+My thanks to Tomer for supplying the notes for this lesson,
+ which I missed because my airline tried to leave me stranded in London indefinitely.
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $a_{n}\left(t\right)$
+\end_inset
+
+ as the probability of 
+\begin_inset Formula $n$
+\end_inset
+
+ individuals at time 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ assuming one individual at time 
+\begin_inset Formula $t=0$
+\end_inset
+
+ and no immigration.
+ Define 
+\begin_inset Formula $A_{k}$
+\end_inset
+
+ as the event in which 
+\begin_inset Formula $k$
+\end_inset
+
+ individuals were born in 
+\begin_inset Formula $\left[0,dt\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We do a backwards derivation for the events in 
+\begin_inset Formula $\left[0,dt\right]$
+\end_inset
+
+ to get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=\sum_{k}\mathbb{P}\left[X_{t}=n|A_{k}\right]\mathbb{P}\left[A_{k}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the per-capita definition of the rates,
+ 
+\begin_inset Formula $\mathbb{P}\left[A_{k}\right]=\lambda_{k}dt$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\mathbb{P}\left[A_{0}\right]=\left(1-\lambda dt\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=\sum_{k}\sum_{\sum_{i=1}^{k}n_{i}=n}\prod_{i=1}^{k}a_{n_{i}}\left(t\right)\lambda_{k}dt+\left(1-\lambda dt\right)a_{n}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)-a_{n}\left(t\right)=-\lambda a_{n}\left(t\right)dt+\sum_{k}\sum_{\sum_{i=1}^{k}n_{i}=n}\prod_{i=1}^{k}a_{n_{i}}\left(t\right)\lambda_{k}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So the ODE follows:
+\begin_inset Formula 
+\[
+\frac{da_{n}}{dt}\left(t\right)=-\lambda a_{n}\left(t\right)+\sum_{k}\sum_{\sum_{i=1}^{k}n_{i}=n}\prod_{i=1}^{k}a_{n_{i}}\left(t\right)\lambda_{k}dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can now multiply by 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ and sum over all 
+\begin_inset Formula $n$
+\end_inset
+
+ to get the PDE for the PGF 
+\begin_inset Formula $g$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial g}{\partial t}\left(x,t\right)=-\lambda g\left(x,t\right)+\sum_{k}\lambda_{k}g^{k}\left(x,t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume immigration starts at 
+\begin_inset Formula $t=0$
+\end_inset
+
+ according to 
+\begin_inset Formula $\mathbb{P}\left[k\text{ immigrants in \left[t,dt\right]}\right]=\gamma_{k}dt+o\left(dt\right)$
+\end_inset
+
+,
+ and denote 
+\begin_inset Formula $S=\sum\gamma_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We denote 
+\begin_inset Formula $b_{n}\left(t\right)$
+\end_inset
+
+ as the probability of 
+\begin_inset Formula $n$
+\end_inset
+
+ individuals at time 
+\begin_inset Formula $t$
+\end_inset
+
+ for this new population.
+ We do a similar derivation with the law of total probability:
+\begin_inset Formula 
+\[
+b_{n}\left(t+dt\right)=b_{n}\left(t\right)\left[1-Sdt\right]+\sum_{k}\gamma_{k}dt\left[\sum_{i+m=n}b_{i}\left(t\right)\prod_{\sum_{j=1}^{k}m_{j}=m}a_{m_{j}}\left(t\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+We used a tricky thing here.
+ If 
+\begin_inset Formula $b$
+\end_inset
+
+ isn't just immigration but the total,
+ the inner sum that decouples 
+\begin_inset Formula $a,b$
+\end_inset
+
+ does not work unless we can tell certain individuals have no immigration relating to them.
+ We are,
+ in essence,
+ saying that the first 
+\begin_inset Formula $k$
+\end_inset
+
+ individuals grow with no immigration and say 
+\begin_inset Quotes eld
+\end_inset
+
+Oh,
+ there's some additional thing going on from other contributions
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The ODE for 
+\begin_inset Formula $b$
+\end_inset
+
+ is given by:
+\begin_inset Formula 
+\[
+\frac{db_{n}}{dt}\left(t\right)=-Sb_{n}\left(t\right)+\sum_{k}\gamma_{k}\left[\sum_{i+m=n}b_{i}\left(t\right)\prod_{\sum_{j=1}^{k}m_{j}=m}a_{m_{j}}\left(t\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we denote 
+\begin_inset Formula $G$
+\end_inset
+
+ as the PGF for this case,
+ we get:
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}\left(x,t\right)=-SG\left(x,t\right)+\sum_{n}x^{n}\sum_{k}\gamma_{k}\left[\sum_{i+m=n}b_{i}\left(t\right)\prod_{\sum_{j=1}^{k}m_{j}=m}a_{m_{j}}\left(t\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We notice that 
+\begin_inset Formula $\left[g^{k}\left(x,t\right)\right]_{m}=\prod_{\sum_{j=1}^{k}m_{j}=m}a_{m_{j}}\left(t\right)$
+\end_inset
+
+,
+ and therefore:
+\begin_inset Formula 
+\[
+\sum_{i+m=n}b_{i}\left(t\right)\prod_{\sum_{j=1}^{k}m_{j}=m}a_{m_{j}}\left(t\right)=\left[g^{k}G\right]_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial G}{\partial t}\left(x,t\right) & =-SG\left(x,t\right)+\sum_{k}\gamma_{k}\sum_{n}x^{n}\left[g^{k}G\right]_{n}=-SG\left(x,t\right)+\sum_{k}\gamma_{k}G\left(x,t\right)g^{k}\left(x,t\right)=\\
+ & G\left(x,t\right)\left[-S+\sum_{k}\gamma_{k}g^{k}\left(x,t\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore we can solve:
+\begin_inset Formula 
+\[
+G\left(x,t\right)=C\left(x\right)\exp\left(\int_{0}^{t}\left[-S+\sum_{k}\gamma_{k}g^{k}\left(x,s\right)\right]ds\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Moment Equations
+\end_layout
+
+\begin_layout Standard
+We denote lower case 
+\begin_inset Formula $m,f$
+\end_inset
+
+ as the uncentered moments and factorial moments of 
+\begin_inset Formula $g$
+\end_inset
+
+,
+ and upper case 
+\begin_inset Formula $M,F$
+\end_inset
+
+ for 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\frac{\partial^{2}g}{\partial t\partial x}\left(x,t\right)=-\lambda\frac{\partial g}{\partial x}\left(x,t\right)+\sum_{k}\lambda_{k}kg^{k-1}\left(x,t\right)\frac{\partial g}{\partial x}\left(x,t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Set 
+\begin_inset Formula $x=1$
+\end_inset
+
+ and we get:
+\begin_inset Formula 
+\[
+\frac{dm_{1}}{dt}=-\lambda m_{1}+\sum_{k}\lambda_{k}km_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote 
+\begin_inset Formula $\alpha=\sum\lambda_{k}k-\lambda$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\[
+\frac{dm_{1}}{dt}=\alpha m_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and thus
+\begin_inset Formula 
+\[
+m_{1}=e^{\alpha t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know that 
+\begin_inset Formula $f_{2}=m_{2}-m_{1}$
+\end_inset
+
+,
+ and we do the second derivative:
+\begin_inset Formula 
+\[
+\frac{\partial^{3}g}{\partial t\partial x^{2}}=-\lambda\frac{\partial^{2}g}{\partial x^{2}}+\sum_{k}\lambda_{k}k\left[\left(k-1\right)g^{k-2}\left(\frac{\partial g}{\partial x}\right)^{2}+g^{k-1}\frac{\partial^{2}g}{\partial x^{2}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And setting 
+\begin_inset Formula $x=1$
+\end_inset
+
+ again we get:
+\begin_inset Formula 
+\[
+\frac{df_{2}}{dt}=-\lambda f_{2}+\sum_{k}\lambda_{k}k\left[\left(k-1\right)e^{2\alpha t}+f_{2}\right]=\alpha f_{2}+e^{2\alpha t}\sum\lambda_{k}k\left(k-1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote 
+\begin_inset Formula $\sum\lambda_{k}k\left(k-1\right)\equiv D_{2}$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\[
+\frac{df_{2}}{dt}=\alpha f_{2}+D_{2}e^{2\alpha t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We solve the homogeneous and particular solutions:
+\begin_inset Formula 
+\[
+f_{2h}=Ce^{\alpha t},f_{2p}=Ae^{2\alpha t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and solve for 
+\begin_inset Formula $A,C$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\[
+f_{2}\left(t\right)=\frac{D_{2}}{\alpha}\left(e^{2\alpha t}-e^{\alpha t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the form of 
+\begin_inset Formula $G$
+\end_inset
+
+ and denoting 
+\begin_inset Formula $Q\left(x,t\right)=\int_{0}^{t}\left[-S+\sum_{k}\gamma_{k}g^{k}\left(x,s\right)\right]ds$
+\end_inset
+
+,
+ we can get (
+\series bold
+if we ignore 
+\begin_inset Formula $c\left(x\right)$
+\end_inset
+
+!
+\series default
+):
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial x}=\frac{\partial Q}{\partial x}e^{Q\left(x,t\right)}=\left(\int_{0}^{t}ds\sum_{k}\gamma_{k}kg^{k-1}\frac{\partial g}{\partial x}\right)e^{Q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Set 
+\begin_inset Formula $x=1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{dM_{1}}{dt}=\left(\int_{0}^{t}\sum_{k}\gamma_{k}ke^{\alpha s}ds\right)1=\frac{\left(e^{\alpha t}-1\right)}{\alpha}\sum_{k}\gamma_{k}k
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
