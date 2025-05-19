@@ -4748,10 +4748,18 @@ We multiply and sum to get the PGF
 \end_layout
 
 \begin_layout Standard
+Which is often called 
+\emph on
+Bartlett's Equation
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
 And therefore:
 \begin_inset Formula 
 \[
-G\left(x,t,T\right)=\exp\left(-S\int_{0}^{t}\left(1-g\left(x,\tau,T\right)\right)d\tau\right)
+G\left(x,t,T\right)=\exp\left(-S\int_{0}^{t}\left(1-g\left(x,\tau,T\right)\right)d\tau\right)=e^{Q\left(x,t,T\right)}
 \]
 
 \end_inset
@@ -4988,6 +4996,24 @@ M_{1}\left(t,T\right) & =\frac{S\lambda_{d}}{\alpha}\left[\int_{0}^{T}m_{1}\left
 \end_layout
 
 \begin_layout Standard
+So given together:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M_{1}\left(t,T\right)=\frac{S\lambda_{d}}{\alpha}\begin{cases}
+t+\frac{1}{\alpha}\left(1-e^{-\alpha t}\right) & 0\leq t\leq T\\
+T+\frac{1}{\alpha}e^{-\alpha t}\left(e^{\alpha T}-1\right) & t>T
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 If 
 \begin_inset Formula $\alpha>0$
 \end_inset
@@ -5041,6 +5067,453 @@ For homework we will have to solve for
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+19.5.2025
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "red"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+We have about 5 more lectures,
+ but we'll reorder the class because we're all so good.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will skip all the legwork and give the solutions for 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial f_{2}}{\partial t}\left(t,T\right)=-\alpha f_{2}\left(t,T\right)+\lambda_{f}\overline{\nu\left(\nu-1\right)}m_{1}^{2}\left(t,T\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And so:
+\begin_inset Formula 
+\[
+f_{2}\left(t,T\right)=\frac{\overline{\nu\left(\nu-1\right)}\lambda_{d}^{2}\lambda_{f}}{\alpha^{3}}\begin{cases}
+2\left(\sinh\left(\alpha t\right)-\alpha t\right) & 0\leq t\leq T\\
+e^{-2\alpha t}\left(2e^{\alpha t}-e^{2\alpha t}+2e^{\alpha\left(t+T\right)}-2e^{\alpha t}\left(1+\alpha t\right)-1\right) & t>T
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+ is just for the population starting with one individual that branches.
+ We still need to get to 
+\begin_inset Formula $F_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ for the case with a Poisson source.
+ We had 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ above and the generating function 
+\begin_inset Formula $G$
+\end_inset
+
+,
+ and we saw:
+\begin_inset Formula 
+\[
+M_{2}-M_{1}=F_{2}=\frac{\partial^{2}G}{\partial x^{2}}\left(1,t,T\right)=\left(\frac{\partial Q}{\partial x}\right)^{2}\left(1,t,T\right)+\frac{\partial^{2}Q}{\partial x^{2}}\left(1,t,T\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+M_{2}-M_{1}=M_{1}^{2}\left(t,T\right)+S\int_{0}^{t}f_{2}\left(\tau,T\right)d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And if we denote 
+\begin_inset Formula $X\left(t,T\right)$
+\end_inset
+
+ as the number of counts:
+\begin_inset Formula 
+\[
+\mathbb{V}\left[X\left(t,T\right)\right]=M_{1}+S\int_{0}^{t}f_{2}\left(\tau,T\right)d\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is ugly A.F.,
+ but in the limit it is somewhat nicer:
+\begin_inset Formula 
+\[
+\mathbb{V}\left[\lim_{t\to\infty}X\left(t,T\right)\right]=\mathbb{V}\left[X\left(T\right)\right]=\mathbb{E}\left[X\left(T\right)\right]+S\frac{\overline{\nu\left(\nu-1\right)}\lambda_{d}^{2}\lambda_{f}}{\alpha^{4}}\left[e^{-\alpha T}+\alpha T-1\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And now we can define the Feynman-Y function:
+\begin_inset Formula 
+\[
+Y\left(T\right)=\lim_{t\to\infty}\frac{\mathbb{V}\left[X\left(t.T\right)\right]}{\mathbb{E}\left[X\left(t,T\right)\right]}-1=\frac{S\frac{\overline{\nu\left(\nu-1\right)}\lambda_{d}^{2}\lambda_{f}}{\alpha^{4}}\left[e^{-\alpha T}-\alpha T-1\right]}{\frac{\lambda_{d}}{\alpha}ST}=\frac{\overline{\nu\left(\nu-1\right)}\lambda_{d}\lambda_{f}}{\alpha^{2}}\left[1-\frac{1-e^{-\alpha T}}{\alpha T}\right]=Y_{\infty}\left(1-\frac{1-e^{-\alpha T}}{\alpha T}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Logistic Model
+\end_layout
+
+\begin_layout Standard
+Our system so far has been dependent on the criticality of the system,
+ and in a critical system,
+ there is no stable state.
+ The limit depends only on the initial condition,
+ but any known drift will also drift our estimate for the limit.
+\end_layout
+
+\begin_layout Standard
+We want to generalize our model to the Logistic ODE model (named by Verhult,
+ the name is terrible and you should look that French guy up and complain to his long forgotten grave).
+\begin_inset Formula 
+\[
+\frac{dy}{dt}\left(t\right)=\alpha y\left(t\right)-\epsilon^{2}y^{2}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This equation is solvable,
+ but we don't actually care about that.
+ What we care about is that there are two stable points.
+ If 
+\begin_inset Formula $y\left(t\right)=0$
+\end_inset
+
+,
+ it will remain there forever.
+ The other is 
+\begin_inset Formula $y\left(t\right)=\frac{\alpha}{\epsilon^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\alpha<0$
+\end_inset
+
+,
+ the other solution is non-physical and it is moot.
+ So we will only consider supercritical systems,
+ with 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The second derivative around 
+\begin_inset Formula $0$
+\end_inset
+
+ changes from negative to positive,
+ so 
+\begin_inset Formula $0$
+\end_inset
+
+ is not an absorbing state,
+ since if 
+\begin_inset Formula $y\left(0\right)\in\left(0,\frac{\alpha}{\epsilon^{2}}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ will increase always towards 
+\begin_inset Formula $\frac{\alpha}{\epsilon^{2}}$
+\end_inset
+
+.
+ Therefore,
+ for any 
+\begin_inset Formula $y\left(0\right)>0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{\alpha}{\epsilon^{2}}$
+\end_inset
+
+ is an attracting state for the ODE in that region,
+ and 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ will monotonically converge to it from any positive starting point.
+ We call 
+\begin_inset Formula $\frac{\alpha}{\epsilon^{2}}$
+\end_inset
+
+ the 
+\emph on
+carrying capacity
+\emph default
+ of the system.
+\end_layout
+
+\begin_layout Standard
+We want to discuss the stochastic logistic model,
+ but what we just talked about is fully deterministic.
+\end_layout
+
+\begin_layout Standard
+We will model the stochastic model by introducing feedback into the death rate.
+\end_layout
+
+\begin_layout Standard
+For any 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\lambda_{k}$
+\end_inset
+
+ is a constant.
+ For 
+\begin_inset Formula $k=-1$
+\end_inset
+
+ (death),
+ 
+\begin_inset Formula $\lambda_{-1}\left(X\right)=\lambda_{-1,0}+\epsilon^{2}X$
+\end_inset
+
+.
+ These,
+ we remind you,
+ are the per capita rates of reaction with 
+\begin_inset Formula $k$
+\end_inset
+
+ progeny.
+\end_layout
+
+\begin_layout Standard
+We start with the law of total probability,
+ as always,
+ for population of size 
+\begin_inset Formula $n$
+\end_inset
+
+,
+ denoted as 
+\begin_inset Formula $a_{n}\left(t\right)$
+\end_inset
+
+,
+ which started as 
+\begin_inset Formula $a_{n}\left(0\right)=\delta_{n1}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=\left(1-\lambda\left(1\right)dt\right)a_{n}+\sum_{k=-1}^{L}\lambda_{k}dt????
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we can't use the backward derivation of looking at 
+\begin_inset Formula $\left[0,dt\right]$
+\end_inset
+
+,
+ because what would we use for combining the effects of different populations when death rates actually depend on them?
+ We must,
+ instead,
+ use the forward derivation.
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=a_{n}\left(t\right)\left(1-\left[\lambda\left(n\right)dt\right]^{n}\right)+\sum_{k=-1}^{L}a_{n-k}\left(t\right)\left(n-k\right)\lambda_{k}\left(n-k\right)dt+o\left(dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which the first term in first order can be simplified to 
+\begin_inset Formula $1-n\lambda\left(n\right)dt$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+a_{n}\left(t+dt\right)=a_{n}\left(t\right)\left(1-n\lambda\left(n\right)dt\right)+\sum_{k=-1}^{L}a_{n-k}\left(t\right)\left(n-k\right)\lambda_{k}\left(n-k\right)dt+o\left(dt\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{da_{n}}{dt}\left(t\right)=-\left(\lambda_{-1,0}n+\epsilon^{2}n^{2}+n\sum_{k=0}^{L}\lambda_{k}\right)a_{n}\left(t\right)+\left[\lambda_{-1,0}+\epsilon^{2}\left(n+1\right)\right]\left(n+1\right)a_{n+1}\left(t\right)+\sum_{k=0}^{L}\lambda_{k}\left(n-k\right)a_{n-k}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can break this into the regular and feedback terms:
+\begin_inset Formula 
+\[
+\frac{da_{n}}{dt}\left(t\right)=-\left(\sum_{k=0}^{L}\lambda_{k}+\lambda_{-1,0}\right)na_{n}\left(t\right)-\epsilon^{2}n^{2}a_{n}\left(t\right)+\left(\lambda_{-1,0}\left(n+1\right)a_{n+1}\left(t\right)+\sum_{k=0}^{L}\lambda_{k}\left(n-k\right)a_{n-k}\right)+\epsilon^{2}\left(n+1\right)^{2}a_{n+1}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can multiply by 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ and sum over all options to go for the PGF G:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial G}{\partial t}\left(x,t\right) & =-\left(\sum_{k=0}^{L}\lambda_{k}+\lambda_{-1,0}\right)\sum na_{n}x^{n}-\epsilon^{2}\sum_{n}n^{2}a_{n}x^{n}\\
+ & +\sum_{k=0}^{L}\lambda_{k}\sum_{n}x^{n}\left(n-k\right)a_{n-k}+\lambda_{-1,0}\sum_{n}a_{n+1}\left(n+1\right)x^{n}\\
+ & +\epsilon^{2}\sum_{n}\left(n+1\right)^{2}a_{n+1}x^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote 
+\begin_inset Formula $\Lambda=\sum_{k}\lambda_{k}+\lambda_{-1,0}$
+\end_inset
+
+ for simplicity:
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}=-\Lambda x\frac{\partial G}{\partial x}+\lambda_{-1,0}\frac{\partial G}{\partial x}-\epsilon^{2}x\left(\frac{\partial}{\partial x}\left(x\frac{\partial G}{\partial x}\right)\right)+\frac{\partial G}{\partial x}\sum_{k=0}^{L}\lambda_{k}x^{k+1}+\epsilon^{2}\left(\frac{\partial}{\partial x}\left(x\frac{\partial G}{\partial x}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is simplified to:
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}=\left(-\Lambda x+\lambda_{-1,0}+\sum_{k=0}^{L}\lambda_{k}x^{k+1}\right)\frac{\partial G}{\partial x}+\epsilon^{2}\left(1-x\right)\left(\frac{\partial G}{\partial x}+x\frac{\partial^{2}G}{\partial x^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We notice that 
+\begin_inset Formula $q\left(x\right)=\lambda_{-1,0}+\sum_{k=0}^{L}\lambda_{k}x^{k+1}$
+\end_inset
+
+ as the characteristic polynominal of the multiplicity rates (not a PGF!!!).
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}=\left(q\left(x\right)-\Lambda x\right)\frac{\partial G}{\partial x}+\epsilon^{2}\left(1-x\right)\left(\frac{\partial G}{\partial x}+x\frac{\partial^{2}G}{\partial x^{2}}\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_body
