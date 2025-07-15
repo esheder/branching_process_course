@@ -5516,5 +5516,1218 @@ We notice that
 
 \end_layout
 
+\begin_layout Section
+26.5.2025
+\end_layout
+
+\begin_layout Standard
+It's moments time,
+ and there are some complications which are great.
+\begin_inset Formula 
+\[
+\frac{\partial^{2}G}{\partial t\partial x}=\left(q-\Lambda x\right)\frac{\partial^{2}G}{\partial x^{2}}+\left(\frac{dq}{dx}-\Lambda\right)\frac{\partial G}{\partial x}+\epsilon^{2}\left(1-x\right)\left(2\frac{\partial^{2}G}{\partial x^{2}}+x\frac{\partial^{3}G}{\partial x^{3}}\right)-\epsilon^{2}\left(\frac{\partial G}{\partial x}+x\frac{\partial^{2}G}{\partial x^{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial^{3}G}{\partial t\partial x^{2}}=\left(q-\Lambda x\right)\frac{\partial^{3}G}{\partial x^{3}}+2\left(\frac{dq}{dx}-\Lambda\right)\frac{\partial^{2}G}{\partial x^{2}}+\frac{d^{2}q}{dx^{2}}\frac{\partial G}{\partial x}+\epsilon^{2}\left(1-x\right)\left(3\frac{\partial^{3}G}{\partial x^{3}}+x\frac{\partial^{4}G}{\partial x^{4}}\right)-2\epsilon^{2}\left(2\frac{\partial^{2}G}{\partial x^{2}}+x\frac{\partial^{3}G}{\partial x^{3}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we set 
+\begin_inset Formula $x=1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{dM_{1}}{dt}=\alpha M_{1}-\epsilon^{2}\left(M_{1}+F_{2}\right)=\alpha M_{1}-\epsilon^{2}M_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\alpha=\frac{dq}{dx}\left(1\right)-\Lambda=\sum_{k=1}^{L}k\lambda_{k}-\Lambda=\Lambda\left(\sum_{k=1}^{L}kp_{k}-1\right)=\Lambda\left(\overline{\nu}-1\right)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{dF_{2}}{dt}=2\alpha F_{2}+D_{2}M_{1}-2\left(2F_{2}+F_{3}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $D_{2}=\frac{d^{2}q}{dx^{2}}\left(1\right)=\sum_{k=1}^{L}k\left(k-1\right)\lambda_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And if we look for 
+\begin_inset Formula $M_{2}=F_{2}-M_{1}$
+\end_inset
+
+,
+ this would be something like:
+\begin_inset Formula 
+\[
+\frac{dM_{2}}{dt}=2\alpha\left(M_{2}-M_{1}\right)+M_{1}D_{2}-2\left(2F_{2}+F_{3}\right)-\alpha M_{1}+\epsilon^{2}M_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we are going to have an infinite set of coupled moment equations.
+ Blah.
+\end_layout
+
+\begin_layout Standard
+What's interesting,
+ is that the equilibrium point isn't going to be at 
+\begin_inset Formula $\frac{\alpha}{\epsilon^{2}}$
+\end_inset
+
+ anymore!
+ Having the same equilibrium point would require:
+\begin_inset Formula 
+\[
+M_{1,\infty}=\frac{\epsilon^{2}}{\alpha}M_{2,\infty}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we only get the same equilibrium point as the deterministic one (
+\begin_inset Formula $\frac{\alpha}{\epsilon^{2}})$
+\end_inset
+
+ if 
+\begin_inset Formula $M_{2,\infty}=\left(\frac{\alpha}{\epsilon^{2}}\right)^{2}$
+\end_inset
+
+,
+ which means 
+\begin_inset Formula $M_{2,\infty}=M_{1,\infty}^{2}$
+\end_inset
+
+,
+ which only happens if the Variance is 
+\begin_inset Formula $0$
+\end_inset
+
+,
+ since 
+\begin_inset Formula $\mathbb{V}\left[x\right]=M_{2}-M_{1}^{2}$
+\end_inset
+
+.
+ This never happens for a stochastic process unless they collapse to a deterministic point,
+ which it won't.
+ So what we get is that the stochastic process has a different equilibrium expectation than the deterministic value.
+\end_layout
+
+\begin_layout Standard
+Having an infinite set of coupled equations means that we're not going to be able to get a closed form solution easily for this system.
+ We can tell that the set point is lower,
+ since 
+\begin_inset Formula $M_{2,\infty}$
+\end_inset
+
+ is strictly positive.
+ We don't know how to analytically solve the stochastic carrying capacity,
+ and there may not even be a closed form.
+ We can introduce a closure and solve the set,
+ but that's going to introduce its own bias in the estimate.
+\end_layout
+
+\begin_layout Standard
+Let us try a little.
+ We will denote 
+\begin_inset Formula $H=\frac{\partial G}{\partial x}$
+\end_inset
+
+ for simplicity and try to solve the differential equation for the limit of 
+\begin_inset Formula $G$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+0=H\left(q-\Lambda x\right)+\epsilon^{2}\left(1-x\right)\left(H+x\frac{dH}{dx}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{dH}{dx}=H\frac{\left(q-\Lambda x\right)-\epsilon^{2}\left(x-1\right)}{\epsilon^{2}x\left(x-1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $x=1$
+\end_inset
+
+ is a root of both the numerator and denominator and 
+\begin_inset Formula $q$
+\end_inset
+
+ is a polynomial in 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ we can write this as:
+\begin_inset Formula 
+\[
+\frac{dH}{dx}=H\left(x\right)C\left(\frac{1}{x}+P\left(x\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+H\left(x\right)=C_{1}e^{\int_{0}^{x}C\left(\frac{1}{s}+P\left(s\right)\right)ds}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+G\left(x\right)=C_{2}+C_{1}\int_{0}^{x}e^{C\int_{0}^{y}\left(\frac{1}{s}+P\left(s\right)\right)ds}dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This has two degrees of freedom,
+ 
+\begin_inset Formula $C_{1},C_{2}$
+\end_inset
+
+,
+ which are determined by the following conditions:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G\left(1\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G$
+\end_inset
+
+ is analytic over the unit circle
+\end_layout
+
+\begin_layout Standard
+This will require that 
+\begin_inset Formula $G_{\infty}\left(x\right)=1$
+\end_inset
+
+,
+ when 
+\begin_inset Formula $C<0$
+\end_inset
+
+,
+ since that function will have a pole otherwise.
+ Oh dear god,
+ that means the numerical simulations that fully allow us to sample the asymptotic behavior isn't actually an asymptotic behavior!
+ It's a quasi-stable state and not a stable state.
+ The actual stable state is a dead population!
+\end_layout
+
+\begin_layout Standard
+What we need is the conditional probability of survival,
+ to take away the quasi-stability!
+\begin_inset Formula 
+\[
+b_{n}\left(t\right)=\mathbb{P}\left[X\left(t\right)=n|X\left(t\right)\neq0\right]=\frac{\mathbb{P}\left[X\left(t\right)=n\right]}{\mathbb{P}\left[X\left(t\right)\neq0\right]}=\begin{cases}
+\frac{a_{n}}{1-a_{0}} & n\neq0\\
+0 & n=0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+\tilde{G}=\sum b_{n}x^{n}=\frac{G\left(x,t\right)-a_{0}\left(t\right)}{1-a_{0}\left(t\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+\tilde{G}_{M.S}\left(x\right)=\lim_{t\to\infty}\frac{G\left(x,t\right)-a_{0}\left(t\right)}{1-a_{0}\left(t\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a formal definition,
+ but we don't know how to actually solve this to get the meta-stable condition.
+ Can we use this to get a differential equation for 
+\begin_inset Formula $\tilde{G}$
+\end_inset
+
+?
+ The extinction problem to know 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ is terrible and we can't solve it,
+ but we know the PDE for 
+\begin_inset Formula $G$
+\end_inset
+
+,
+ and thus:
+\begin_inset Formula 
+\[
+\tilde{G}_{M.S}\left(x,t\right)=\frac{G\left(x,t\right)-G\left(0,t\right)}{1-G\left(0,t\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+9.6.2025
+\end_layout
+
+\begin_layout Standard
+We are going to deal with the diffusion approximation today.
+\end_layout
+
+\begin_layout Standard
+We start with the Langevin equation:
+\begin_inset Formula 
+\[
+\frac{dx}{dt}=F\left(x,t\right)+\eta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\eta$
+\end_inset
+
+ is some stochastic process.
+ What they wanted to do is introduce random noise into a differential equation.
+ The subtext is that the contribution of the stochastic term is smaller than the deterministic term.
+ We would have wanted 
+\begin_inset Formula $\eta$
+\end_inset
+
+ to have a bound variance and so on.
+\end_layout
+
+\begin_layout Standard
+The problem we run into is that the differential term isn't well defined with this jumping stochastic process.
+ Ito defined this problem with Ito calculus,
+ which is where we are going today.
+ We tried to do proofs and so on when necessary so far,
+ but Ito calculus is its own course so we're going to hand waive quite a bunch.
+\end_layout
+
+\begin_layout Subsection
+Brownian Motion
+\end_layout
+
+\begin_layout Standard
+We are calling it BM,
+ but its mathematical name is usually a Wiener process.
+ A process 
+\begin_inset Formula $X$
+\end_inset
+
+ will be called BM if:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall t,t_{0}>0\quad\mathbb{E}\left[X\left(t_{0}+t\right)|X\left(t_{0}\right)\right]=X\left(t_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\forall t,s>0\quad X\left(t+s\right)-X\left(t\right)\sim N\left(0,\sqrt{s}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Does such a process exist?
+ Yes.
+ There are multiple constructions,
+ the known one is Donsker's.
+ Look up Donsker's Theorem,
+ which does an acceleration to a drunk walk.
+\begin_inset Formula 
+\[
+W_{t}=\lim_{n\to\infty}\frac{X\left(\underline{nt}\right)}{\sqrt{n}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Is proven to exist and have the BM conditions.
+\end_layout
+
+\begin_layout Standard
+Now we define an Ito integral (a stochastic integral),
+ using BM variables.
+ Let 
+\begin_inset Formula $X_{t},W_{t}$
+\end_inset
+
+ be random processes and 
+\begin_inset Formula $f:\mathbb{R}\to\mathbb{R}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $S$
+\end_inset
+
+ be some partition of 
+\begin_inset Formula $\left[0,T\right]$
+\end_inset
+
+.
+ We define:
+\begin_inset Formula 
+\[
+I\left(S\right)=\sum_{i=1}^{N}f\left(x_{t_{i}}\right)\left(W_{t_{i+1}}-W_{t_{i}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a random variable,
+ which also depends on 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ Denote 
+\begin_inset Formula $i\left(S\right)$
+\end_inset
+
+ as the refinement parameter of 
+\begin_inset Formula $S$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $i\left(S\right)=\max_{i}\left\{ t_{i+1}-t_{i}\right\} $
+\end_inset
+
+.
+ We define:
+\begin_inset Formula 
+\[
+\int_{o}^{T}f\left(X_{s}\right)dW_{s}=\lim_{i\left(S\right)\to0}I\left(S\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If it exists.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Does it exist for some specific series of partitions 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+?
+ Under which conditions and what type of convergence this is for a random variable?
+\end_layout
+
+\begin_layout Enumerate
+Can we get a limit in the general sense written above,
+ in terms of not having to specify the series of 
+\begin_inset Formula $S$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsection*
+Ito's Theorem
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+ is a BM (Wiener process),
+ 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ has a bounded variation and 
+\begin_inset Formula $f$
+\end_inset
+
+ is locally square-integrable and 
+\begin_inset Formula $f\left(X_{s}\right)$
+\end_inset
+
+ is adapted to the filtration of 
+\begin_inset Formula $W_{t}$
+\end_inset
+
+,
+ then the Ito integral is well defined for any series of partitions.
+ It also works when 
+\begin_inset Formula $dW_{t}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\delta$
+\end_inset
+
+ distribution.
+\end_layout
+
+\begin_layout Standard
+We can then write:
+\begin_inset Formula 
+\[
+X_{t}=X_{0}+\int_{0}^{t}f\left(X_{s},s\right)ds+\int_{0}^{t}B\left(X_{s},s\right)dW_{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a random process,
+ well defined,
+ where the initial condition is some random distribution,
+ the first Ito integral is with a 
+\begin_inset Formula $\delta$
+\end_inset
+
+ distribution and the second is an Ito integral with a Wiener process.
+ Now we have an integral equation for 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+,
+ where we look for a process to satisfy this.
+\end_layout
+
+\begin_layout Standard
+We denote this integral equation with a differential system for ease:
+\begin_inset Formula 
+\[
+dX_{t}=f\left(X_{t},t\right)dt+B\left(X_{t},t\right)dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This equation gives us the intuition for when this SDE is a useful model.
+ When in every small time scale we can approximate with a deterministic behavior on 
+\begin_inset Formula $X\left(t\right)$
+\end_inset
+
+ that is proportional to 
+\begin_inset Formula $dt$
+\end_inset
+
+,
+ and a normal variable with mean 0 and its variance is proportional to 
+\begin_inset Formula $dt$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The deterministic term is called the 
+\emph on
+drift term
+\emph default
+,
+ and the second term is called the 
+\emph on
+noise term
+\emph default
+ or the 
+\emph on
+diffusion term
+\emph default
+.
+ When there is no diffusion,
+ we have a regular ODE.
+\end_layout
+
+\begin_layout Subsection*
+Classic Example
+\end_layout
+
+\begin_layout Standard
+We already discussed renewal processes back in this course.
+ A renewal process is a time series where the dwell times are i.i.d.
+ If 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ is a renewal process,
+ the counter of 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ is defined by 
+\begin_inset Formula $R\left(t\right)=\sum_{i}\chi_{t_{i}<t}=\max\left\{ n|t_{n}<t\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If we denote 
+\begin_inset Formula $\mu=\mathbb{E}\left[\theta\right]$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\lim_{t\to\infty}\frac{\mathbb{E}\left[R\left(t\right)\right]}{t}=\frac{1}{\mu}$
+\end_inset
+
+.
+ This is because if we have enough measurements,
+ we expect them to be the rate (1 over the period) times the total time.
+\end_layout
+
+\begin_layout Standard
+The stronger version of this is if we denote 
+\begin_inset Formula $\sigma^{2}=\mathbb{V}\left[\theta\right]$
+\end_inset
+
+,
+ then:
+ 
+\begin_inset Formula 
+\[
+\lim_{t\to\infty}\frac{R\left(t\right)-\frac{t}{\mu}}{\sigma\sqrt{\frac{t}{\mu^{3}}}}\sim N\left(0,1\right)
+\]
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In an engineering sense,
+ this means that 
+\begin_inset Formula $R\left(T\right)\sim\frac{T}{\mu}+\sqrt{\frac{\sigma^{2}}{\mu^{3}}}\sqrt{T}N\left(0,1\right)=N\left(\frac{T}{\mu},\sigma^{2}\frac{T}{\mu^{3}}\right)$
+\end_inset
+
+,
+ whenever 
+\begin_inset Formula $T\gg\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If we assume that we look at a time interval 
+\begin_inset Formula $\Delta t\gg\mu$
+\end_inset
+
+,
+ we can write:
+\begin_inset Formula 
+\[
+R\left(\Delta t\right)-R\left(0\right)\approx\frac{1}{\mu}\Delta t+\frac{\sigma^{2}}{\mu^{3}}\Delta W_{\Delta t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This yells at us to use an SDE,
+ because we have a drift and a proper noise term.
+ If we have time scales such that the macroscopic solution time 
+\begin_inset Formula $t\gg\mu$
+\end_inset
+
+,
+ we can approximate 
+\begin_inset Formula $R\left(t\right)$
+\end_inset
+
+ with the SDE:
+\begin_inset Formula 
+\[
+dR\left(t\right)=\frac{1}{\mu}dt+\sqrt{\frac{\sigma^{2}}{\mu^{3}}}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+An extension to this example
+\end_layout
+
+\begin_layout Standard
+If the dwell time somewhat depends on the count rate so far,
+ such that this is no longer a renewal process.
+ This means 
+\begin_inset Formula $\mu\left(R\left(t\right)\right)$
+\end_inset
+
+,
+ then if the change in 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is still slow because 
+\begin_inset Formula $R$
+\end_inset
+
+ changes slowly enough and the dependence is slow enough,
+ but we can still assume that 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is constant in a time step 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+,
+ we can still write:
+\begin_inset Formula 
+\[
+dR=\frac{1}{\mu\left(R\left(t\right)\right)}dt+\sqrt{\frac{\sigma^{2}\left(R\left(t\right)\right)}{\mu^{3}\left(R\left(t\right)\right)}}dW_{t}
+\]
+
+\end_inset
+
+This happens when 
+\begin_inset Formula $R$
+\end_inset
+
+ is large and a single count barely changes it,
+ and then if 
+\begin_inset Formula $\mu$
+\end_inset
+
+ depends on large changes in 
+\begin_inset Formula $R$
+\end_inset
+
+,
+ this will work well.
+\end_layout
+
+\begin_layout Subsection
+Diffusion approximation to a branching process
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ be a branching process with reaction rates 
+\begin_inset Formula $\lambda_{l}$
+\end_inset
+
+ (per capita rates for 
+\begin_inset Formula $l$
+\end_inset
+
+ progeny,
+ 
+\begin_inset Formula $l\geq0$
+\end_inset
+
+,
+ and 0 is death).
+\end_layout
+
+\begin_layout Standard
+We look at the change rate in some small time 
+\begin_inset Formula $dt$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $X\left(t+dt\right)-X\left(t\right)$
+\end_inset
+
+.
+ We denote 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ as the progeny individual 
+\begin_inset Formula $i$
+\end_inset
+
+ has in that time.
+ We know that this is just:
+\begin_inset Formula 
+\[
+X\left(t+dt\right)-X\left(t\right)=\sum_{i=1}^{X\left(t\right)}x_{i}-X\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know that:
+ 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[x_{i}\right] & =\sum_{l}P\left(x_{i}=l\right)\left(l-1\right)=\sum_{l}l\lambda_{l}dt+\left(1-\lambda dt\right)+o\left(dt\right)\\
+\mathbb{V}\left[x_{i}\right] & =\mathbb{E}\left[x_{i}^{2}\right]-\mathbb{E}^{2}\left[x_{i}\right]=\sum_{l}l^{2}\lambda_{l}dt+\left(\cancel{1}-\lambda dt\right)-\cancel{1}-2\sum_{l}l\lambda_{l}dt+2\lambda dt+o\left(dt\right)\\
+ & =\sum_{l}l^{2}\lambda_{l}dt-2\sum_{l}l\lambda_{l}dt+\lambda dt+o\left(dt\right)=\sum\lambda_{l}\left(l-1\right)^{2}dt+o\left(dt\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The C.L.T says that we can approximate:
+\begin_inset Formula 
+\[
+\frac{X\left(t+dt\right)-X\left(t\right)-X\left(t\right)\left(\sum_{l}l\lambda_{l}dt-\lambda dt\right)+o\left(dt\right)}{\sqrt{X\left(t\right)\left(\sum\lambda_{l}\left(l-1\right)^{2}\right)dt+o\left(dt\right)}}\sim N\left(0,1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we can write something like:
+\begin_inset Formula 
+\[
+dX_{t}=X_{t}\left(\sum_{l}l\lambda_{l}-\lambda\right)dt+\sqrt{X\left(t\right)\left(\sum_{l}\lambda_{l}\left(l-1\right)^{2}\right)}dW_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is the diffusion approximation to the branching process.
+\end_layout
+
+\begin_layout Standard
+Next lesson we'll add detection.
+\end_layout
+
+\begin_layout Section
+30.6.2025 (After the Iran war)
+\end_layout
+
+\begin_layout Standard
+This is an extra lesson,
+ since we lost 2 with the war.
+ We are considering the SIR model (Susceptible,
+ Infected and Recovered/Removed) in the stochastic case.
+\end_layout
+
+\begin_layout Standard
+We assume 
+\begin_inset Formula $S+I+R=N$
+\end_inset
+
+ which is a time constant,
+ so the population has an initial capacity that stays the same,
+ and things just move ahead.
+\end_layout
+
+\begin_layout Subsection
+Deterministic Model
+\end_layout
+
+\begin_layout Standard
+The deterministic model is rather simple:
+\begin_inset Formula 
+\begin{align*}
+\frac{dS}{dt} & =-\frac{\beta}{N}SI\\
+\frac{dI}{dt} & =\frac{\beta}{N}SI-\mu I\\
+\frac{dR}{dt} & =\mu I
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The time consistency arises from the equations themselves,
+ and if we don't care about 
+\begin_inset Formula $R$
+\end_inset
+
+ we could just drop the whole thing.
+ A few things to immediately note:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S\left(t\right)$
+\end_inset
+
+ monotonically decreases,
+ 
+\begin_inset Formula $R\left(t\right)$
+\end_inset
+
+ monotonically increases to 
+\begin_inset Formula $N$
+\end_inset
+
+ in most cases
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S\left(t\right)=N$
+\end_inset
+
+ means that 
+\begin_inset Formula $\frac{dI}{dt}=I\left(\beta-\mu\right)$
+\end_inset
+
+.
+ It is slightly meaningless in that specific case since 
+\begin_inset Formula $I\equiv0$
+\end_inset
+
+,
+ but meh.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $N,S\gg I$
+\end_inset
+
+,
+ we can make the above assumption anyway,
+ because 
+\begin_inset Formula $S\sim N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The base infection coefficient 
+\begin_inset Formula $R_{0}=\frac{\beta}{\mu}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $S\left(t\right)$
+\end_inset
+
+ monotonically decreases,
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+ we can use Gronwall's inequality (
+\begin_inset Formula $\frac{S}{N}\beta-\mu\leq\beta-\mu$
+\end_inset
+
+) to get 
+\begin_inset Formula $I\left(t\right)\leq Ce^{\left(\beta-\mu\right)t}=Ce^{\mu\left(R_{0}-1\right)t}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\beta<\mu$
+\end_inset
+
+,
+ there is really no epidemic,
+ since the infected population is vanishingly small.
+ To make something an epidemic,
+ we only care if 
+\begin_inset Formula $R_{0}>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If we look at 
+\begin_inset Formula $I\left(t\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{dI}{dt}=I\left(\frac{S}{N}\beta-\mu\right)$
+\end_inset
+
+,
+ we will reach a maximum of infected when 
+\begin_inset Formula $S=\frac{\mu}{\beta}N$
+\end_inset
+
+,
+ which is called 
+\begin_inset Quotes eld
+\end_inset
+
+herd immunity
+\begin_inset Quotes erd
+\end_inset
+
+,
+ because so many were infected that we can no longer support an epidemic.
+ This can be rewritten for 
+\begin_inset Formula $I,R$
+\end_inset
+
+ as 
+\begin_inset Formula $\left(N-\left(I+R\right)\right)=\frac{N}{R_{0}}$
+\end_inset
+
+.
+ This can be solved for 
+\begin_inset Formula $I$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\[
+I=N\left(1-\frac{1}{R_{0}}\right)-R
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $R$
+\end_inset
+
+ is large,
+ herd immunity is reached with a smaller maximal infected number,
+ which is important because they are putting a burden on the healthcare system.
+\end_layout
+
+\begin_layout Subsection
+Stochastic model
+\end_layout
+
+\begin_layout Standard
+Now onto the stochastic problem.
+ This is a more complex issue but very interesting,
+ because it is much closer to the actual mathematics of this problem.
+\end_layout
+
+\begin_layout Standard
+We have 
+\begin_inset Formula $S_{t},I_{t},R_{t}$
+\end_inset
+
+ and we look at 
+\begin_inset Formula $\left[t,t+dt\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left[S_{t}\to S_{t}-1,I_{t}\to I_{t}+1,R_{t}\right] & =\frac{S_{t}I_{t}}{N}\beta dt+o\left(dt\right)\\
+\mathbb{P}\left[S_{t},I_{t}\to I_{t}-1,R_{t}+1\right] & =\mu I_{t}dt+o\left(dt\right)\\
+\mathbb{P}\left[S_{t},I_{t},R_{t}\right] & =1-\frac{S_{t}I_{t}}{N}\beta dt-\mu I_{t}dt+o\left(dt\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will look at the generating function 
+\begin_inset Formula $G\left(x,y,z\right)=\mathbb{E}\left[x^{S}y^{I}z^{R}\right]$
+\end_inset
+
+.
+ To get a term for this,
+ our usual methods will work.
+ When we then derive by 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ to get the mean behavior:
+\begin_inset Formula 
+\begin{align*}
+\frac{d\mathbb{E}\left[S\right]}{dt} & =-\frac{\mathbb{E}\left[SI\right]}{N}\beta\\
+\frac{d\mathbb{E}\left[I\right]}{dt} & =\frac{\mathbb{E}\left[SI\right]}{N}\beta-\mu\mathbb{E}\left[I\right]\\
+\frac{d\mathbb{E}\left[R\right]}{dt} & =\mu\mathbb{E}\left[I\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Just like in the logistic model,
+ the stochastic behavior changes the mean behavior!
+ We only get the deterministic model if we implicitly assume that 
+\begin_inset Formula $\mathbb{E}\left[SI\right]=\mathbb{E}\left[S\right]\mathbb{E}\left[I\right]$
+\end_inset
+
+,
+ which isn't ever true!
+\end_layout
+
+\begin_layout Standard
+The natural way to do this is to compute 
+\begin_inset Formula $cov\left(S,I\right)=\mathbb{E}\left[SI\right]-\mathbb{E}\left[S\right]\mathbb{E}\left[I\right]$
+\end_inset
+
+ from the real system once,
+ and then we can look at 
+\begin_inset Formula $\rho\left(S,I\right)=\frac{cov(S,I)}{\sigma\left(S\right)\sigma\left(I\right)}$
+\end_inset
+
+.
+ The problem is that this is expensive,
+ and if we run many populations then we might as well have run the whole thing and know the full populations...
+\end_layout
+
+\begin_layout Subsection
+Test
+\end_layout
+
+\begin_layout Standard
+The test will be a home test,
+ at 17.7.
+ We will have our materials open.
+ Dubi will be abroad.
+ He will give us a model,
+ and if we understand the logistic model we can probably handle it.
+\end_layout
+
+\begin_layout Standard
+We will need to Chapman-Kolmogorov that model,
+ and it will have some trick to it.
+\end_layout
+
+\begin_layout Standard
+It may be a home work rather than a test.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \end_body
 \end_document
