@@ -1,0 +1,1204 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008080
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Course Capstone Solution by Eshed Magali,
+ 16.7.2025
+\end_layout
+
+\begin_layout Standard
+The work is made of 2 questions,
+ which is how I structure my solution,
+ as well.
+ However,
+ I will do some definitions first.
+ Throughout the course,
+ we used the big-O notation 
+\begin_inset Formula $O(dt)$
+\end_inset
+
+ for function orders in terms of a small time interval.
+ I find it easier to use the small-o notation.
+ A function 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ is considered to be 
+\begin_inset Formula $o(x^{n})$
+\end_inset
+
+ if:
+\begin_inset Formula 
+\[
+\lim_{x\to0}\frac{f\left(x\right)}{x^{n}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It will also come in handy to denote that 
+\begin_inset Formula $g^{\left[m\right]}\left(x\right)=g(g(\dots g(x)\dots)$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $g$
+\end_inset
+
+ is applied 
+\begin_inset Formula $m$
+\end_inset
+
+ times in total.
+\end_layout
+
+\begin_layout Section
+Discrete Branching Problem
+\end_layout
+
+\begin_layout Standard
+A discrete branching process 
+\begin_inset Formula $a_{m}$
+\end_inset
+
+ is defined with the multiplicity rule:
+\begin_inset Formula 
+\begin{align*}
+p_{0} & =q\\
+p_{1} & =p_{2}=\dots=p_{n}=\frac{1-q}{n}\\
+\forall j & >n\quad p_{j}=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $q\in\left(0,1\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ is some natural number.
+\end_layout
+
+\begin_layout Standard
+Prove that for any 
+\begin_inset Formula $q$
+\end_inset
+
+ there exists some 
+\begin_inset Formula $n$
+\end_inset
+
+ such that 
+\begin_inset Formula $\lim_{m\to\infty}\mathbb{E}\left[a_{m}\right]=\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Solution
+\end_layout
+
+\begin_layout Standard
+Let some 
+\begin_inset Formula $q\in\left(0,1\right)$
+\end_inset
+
+.
+ I start by assuming 
+\begin_inset Formula $a_{0}=1$
+\end_inset
+
+.
+ Since this is a 
+\emph on
+stationary
+\emph default
+ branching process,
+ the solution for any other initial population size will just involve raising the PGF to the power of the initial population,
+ and the initial population has no effect on whether the system grows to infinity or not,
+ so long as it is positive.
+ 
+\end_layout
+
+\begin_layout Standard
+We have seen in class that for any multiplicity PGF 
+\begin_inset Formula $Q$
+\end_inset
+
+ (which includes death,
+ as defined above),
+ the stationary branching process' PGF at the 
+\begin_inset Formula $m$
+\end_inset
+
+-th generation,
+ denoted 
+\begin_inset Formula $H_{m}$
+\end_inset
+
+,
+ is just:
+\begin_inset Formula 
+\[
+H_{m}\left(x\right)=Q^{\left[m\right]}\left(x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can get the recursion relation for the expectation by deriving this in 
+\begin_inset Formula $x$
+\end_inset
+
+ and setting 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\frac{dH_{m}}{dx}\left(x\right)=\frac{dQ}{dx}\left(Q^{\left[m-1\right]}\left(x\right)\right)\left(\frac{d}{dx}\left(Q^{\left[m-1\right]}\right)\left(x\right)\right)=\frac{dQ}{dx}\left(H_{m-1}\left(x\right)\right)\left(\frac{dH_{m-1}}{dx}\left(x\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And setting 
+\begin_inset Formula $x=1$
+\end_inset
+
+ we get:
+\begin_inset Formula 
+\[
+\mathbb{E}\left[a_{m}\right]=\frac{dH_{m}}{dx}\left(1\right)=\frac{dQ}{dx}\left(1\right)\mathbb{E}\left[a_{m-1}\right]=\left[\sum_{\nu=0}^{\infty}\nu p_{\nu}\right]\mathbb{E}\left[a_{m-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far it is the derivation for the generalized microbial problem from class verbatim,
+ from the second lecture of this semester.
+\end_layout
+
+\begin_layout Standard
+Now,
+ we just need to pop in our multiplicity,
+ and prove that there exists some 
+\begin_inset Formula $n$
+\end_inset
+
+ such that the system is supercritical,
+ i.e,
+ 
+\begin_inset Formula $\bar{\nu}\equiv\sum_{\nu=0}^{\infty}\nu p_{\nu}>1$
+\end_inset
+
+.
+ The recursion relation will be solved to 
+\begin_inset Formula $\mathbb{E}\left[a_{m}\right]=\bar{\nu}^{m}$
+\end_inset
+
+ (as seen in class),
+ which will limit to infinity iff 
+\begin_inset Formula $\bar{\nu}>1$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\bar{\nu}\left(n\right)=\sum_{\nu=0}^{\infty}\nu p_{\nu}=0\cdot q+\frac{1-q}{n}\sum_{\nu=1}^{n}\nu=\frac{1-q}{n}\frac{n\left(n+1\right)}{2}=\frac{1}{2}\left(1-q\right)\left(n+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Choose 
+\begin_inset Formula $n=2\left\lceil \frac{1}{1-q}\right\rceil +1$
+\end_inset
+
+.
+ We know that:
+\begin_inset Formula 
+\begin{align*}
+\bar{\nu}\left(n\right) & =\frac{1}{2}\left(1-q\right)\left(2\left\lceil \frac{1}{1-q}\right\rceil +2\right)\\
+ & =\left(1-q\right)\left\lceil \frac{1}{1-q}\right\rceil +1-q\\
+ & >\frac{1-q}{1-q}+1-q=1+\left(1-q\right)>1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\square$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Continuous Branching Process
+\end_layout
+
+\begin_layout Standard
+Let a continuous branching process be defined by these per-capita reaction rates:
+\begin_inset Formula 
+\begin{align*}
+\lambda_{0}\left(n\right) & =\lambda_{0}\\
+\lambda_{2}\left(n\right) & =\begin{cases}
+\lambda_{2,0}+\frac{a}{n} & n\neq0\\
+\lambda_{2,0} & 0
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Well,
+ it seems clear that the question means to say that the per-capita rate for dying and giving birth to 
+\begin_inset Formula $0$
+\end_inset
+
+ descendants is 
+\begin_inset Formula $\lambda_{0}\left(n\right)$
+\end_inset
+
+.
+ It could also have been trying to convey the per-capita rate for a population change of size 
+\begin_inset Formula $0$
+\end_inset
+
+,
+ but that's irrelevent information for this problem.
+\end_layout
+
+\begin_layout Standard
+It also seems clear that the second rate 
+\begin_inset Formula $\lambda_{2}\left(n\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0$
+\end_inset
+
+ being any specific number is meaningless,
+ because a per-capita rate in that case would always be 
+\begin_inset Formula $0$
+\end_inset
+
+,
+ if it is well defined.
+ We might as well have written it to be 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The total reaction rate for a population of size 
+\begin_inset Formula $n$
+\end_inset
+
+ is just:
+\begin_inset Formula 
+\[
+\lambda\left(n\right)=\lambda_{0}\left(n\right)+\lambda_{2}\left(n\right)=\begin{cases}
+\lambda_{0}+\lambda_{2,0}+\frac{a}{n} & n\neq0\\
+\lambda_{0}+\lambda_{2,0} & n=0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Differential equation for the population of size 
+\begin_inset Formula $n$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $a_{n}\left(t\right)$
+\end_inset
+
+ be the probability of a population of size 
+\begin_inset Formula $n$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+a_{n}\left(t\right)=\mathbb{P}\left[X_{t}=n\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ being our stochastic process.
+\end_layout
+
+\begin_layout Paragraph
+Solution
+\end_layout
+
+\begin_layout Standard
+We will split the cases for 
+\begin_inset Formula $n=0,1$
+\end_inset
+
+ and 
+\begin_inset Formula $n>1$
+\end_inset
+
+.
+ We will look at what happens during 
+\begin_inset Formula $\left[t,t+dt\right]$
+\end_inset
+
+ and its effects on the probability at 
+\begin_inset Formula $t+dt$
+\end_inset
+
+,
+ using the law of total probability,
+ for 
+\begin_inset Formula $n>1$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+a_{n}\left(t+dt\right) & =a_{n}\left(t\right)\left(1-P\left(\text{at least one event with \ensuremath{n} individuals}\right)\right)\\
+ & +a_{n+1}\left(t\right)\left(n+1\right)\lambda_{0}\left(n+1\right)dt\\
+ & +a_{n-1}\left(t\right)\left(n-1\right)\lambda_{2}\left(n-1\right)dt+o\left(dt\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have to do the forward derivation because of the same kind of problem we encountered in the logistic model when we tried to do the backward derivation.
+\end_layout
+
+\begin_layout Standard
+The first term here is the probability of no event.
+ Just like the logistical problem in class from 19.5.2025 (lecture 8),
+ up to first order this can be written as 
+\begin_inset Formula $P\left(\text{at least one event with \ensuremath{n} individuals}\right)=n\lambda\left(n\right)dt+o\left(dt\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+And thus we get:
+\begin_inset Formula 
+\[
+\frac{da_{n}}{dt}=-n\left(\lambda_{0}+\lambda_{2,0}+\frac{a}{n}\right)a_{n}+a_{n+1}\left(t\right)\left(n+1\right)\lambda_{0}dt+a_{n-1}\left(t\right)\left(n-1\right)\left(\lambda_{2,0}+\frac{a}{n-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $n=0$
+\end_inset
+
+ we have a simpler version,
+ where:
+\begin_inset Formula 
+\[
+a_{0}\left(t+dt\right)=a_{0}\left(t\right)+a_{1}\left(t\right)\lambda_{0}dt+o\left(dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So:
+\begin_inset Formula 
+\[
+\frac{da_{0}}{dt}=\lambda_{0}a_{1}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And for 
+\begin_inset Formula $n=1$
+\end_inset
+
+ we have the slightly more complicated version of:
+\begin_inset Formula 
+\[
+a_{1}\left(t+dt\right)=a_{1}\left(t\right)\left[1-\left(\lambda_{0}+\lambda_{2,0}+a\right)dt\right]+a_{2}\left(t\right)2\lambda_{0}dt+o\left(dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And therefore:
+\begin_inset Formula 
+\[
+\frac{da_{1}}{dt}=-\left(\lambda_{0}+\lambda_{2,0}+a\right)a_{1}\left(t\right)+2a_{2}\left(t\right)\lambda_{0}+o\left(dt\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I believe this concludes this subsection,
+ because we can't really further simplify these equations,
+ since they're coupled together.
+\end_layout
+
+\begin_layout Subsection
+PDE for the PGF of the population at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We denote the PGF of 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ as 
+\begin_inset Formula $G\left(x,t\right)$
+\end_inset
+
+.
+ We can multipliy all the differential equations for 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ by 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ and sum over all 
+\begin_inset Formula $n$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial G}{\partial t}\left(x,t\right) & =\lambda_{0}\sum_{n=0}^{\infty}a_{n+1}\left(t\right)\left(n+1\right)x^{n}+\\
+ & -\sum_{n=1}^{\infty}n\left(\lambda_{0}+\lambda_{2,0}+\frac{a}{n}\right)a_{n}\left(t\right)x^{n}\\
+ & +\sum_{n=2}^{\infty}\left(n-1\right)a_{n-1}\left(t\right)\left(\lambda_{2,0}+\frac{a}{n-1}\right)x^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first term we deal with like we always do.
+ It is simply 
+\begin_inset Formula $\lambda_{0}\frac{\partial G}{\partial x}$
+\end_inset
+
+.
+ The second and third terms we can separate out the usual population-independent rates from the 
+\begin_inset Formula $\frac{1}{n}$
+\end_inset
+
+ terms to get:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial G}{\partial t}\left(x,t\right) & =\lambda_{0}\frac{\partial G}{\partial x}\left(x,t\right)\\
+ & -\left(\lambda_{0}+\lambda_{2,0}\right)\sum_{n=1}^{\infty}na_{n}\left(t\right)x^{n}\\
+ & +\lambda_{2,0}\sum_{n=2}^{\infty}\left(n-1\right)a_{n-1}\left(t\right)x^{n}\\
+ & -a\sum_{n=1}^{\infty}a_{n}\left(t\right)x^{n}\\
+ & +a\sum_{n=2}^{\infty}a_{n-1}\left(t\right)x^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second term is simply 
+\begin_inset Formula $-\left(\lambda_{0}+\lambda_{2,0}\right)x\frac{\partial G}{\partial x}$
+\end_inset
+
+ and the third is 
+\begin_inset Formula $\lambda_{2,0}x^{2}\frac{\partial G}{\partial x}$
+\end_inset
+
+.
+ So we get:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial G}{\partial t}\left(x,t\right) & =\frac{\partial G}{\partial x}\left(x,t\right)\left[\left(\lambda_{0}+\lambda_{2,0}x^{2}\right)-\left(\lambda_{0}+\lambda_{2,0}\right)x\right]\\
+ & -a\sum_{n=1}^{\infty}a_{n}\left(t\right)x^{n}+a\sum_{n=2}^{\infty}a_{n-1}\left(t\right)x^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first term is similar to the logistic model case,
+ where 
+\begin_inset Formula $q\left(x\right)=\lambda_{0}+\lambda_{2,0}x^{2}$
+\end_inset
+
+ is the characteristic polynomial of the multiplicity rates,
+ and 
+\begin_inset Formula $\left(\lambda_{0}+\lambda_{2,0}\right)x$
+\end_inset
+
+ is 
+\begin_inset Formula $\Lambda x$
+\end_inset
+
+ ,where 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is the no-feedback per-capita reaction rate.
+ So this matches our expectation to be similar to the logistic model,
+ except with some perturbation given in the last 2 terms.
+ Those terms are almost,
+ but not quite,
+ transferable to be the PGF.
+ Instead:
+\begin_inset Formula 
+\[
+a\sum_{n=1}^{\infty}a_{n}\left(t\right)x^{n}=a\sum_{n=0}^{\infty}a_{n}\left(t\right)x^{n}-aa_{0}\left(t\right)=a\left[G\left(x,t\right)-a_{0}\left(t\right)\right]=a\left[G\left(x,t\right)-G\left(0,t\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And similarly:
+\begin_inset Formula 
+\[
+a\sum_{n=2}^{\infty}a_{n-1}\left(t\right)x^{n}=a\sum_{n=1}^{\infty}a_{n-1}\left(t\right)x^{n}-axa_{0}\left(t\right)=ax\left[G\left(x,t\right)-a_{0}\right]=ax\left[G\left(x,t\right)-G\left(0,t\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we can write for the full PDE:
+\begin_inset Formula 
+\[
+\frac{\partial G}{\partial t}\left(x,t\right)=\frac{\partial G}{\partial x}\left(x,t\right)\left[q\left(x\right)-\Lambda x\right]+a\left(x-1\right)\left[G\left(x,t\right)-G\left(0,t\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finishing this subsection.
+\end_layout
+
+\begin_layout Subsection
+Explain why this PDE is problematic (is it autonomous?),
+ and suggest a condition for which it can be approximated with an autonomous equation
+\end_layout
+
+\begin_layout Standard
+This PDE is not autonomous.
+ The term 
+\begin_inset Formula $G\left(0,t\right)$
+\end_inset
+
+ is introducing this problem,
+ because that's a strict 
+\begin_inset Formula $t$
+\end_inset
+
+ dependence,
+ although through a non-local evaluation of the distribution.
+ In general,
+ equations being non-autonomous isn't strange for us.
+ Strictly speaking,
+ the stationary branching process problem is actually also non-autonomous because we have a direct dependence on 
+\begin_inset Formula $x$
+\end_inset
+
+ in it.
+ Just like the PDE:
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial t}=\frac{\partial F}{\partial x}+x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Is,
+ mathematically speaking,
+ non-autonomous,
+ because it has a strict dependence on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Without context such as to which variable has boundary conditions and which has the initial condition,
+ a mathematician can't imbue the PDE with more significance when it non-autonomous in 
+\begin_inset Formula $t$
+\end_inset
+
+ vs non-autonomous in 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ So it might seem at first that being non-autonomous isn't something new and problematic,
+ but it somewhat is.
+\end_layout
+
+\begin_layout Standard
+Here we are non-autonomous in 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ which is much more of real issue,
+ because that's the initial condition variable and not the boundary condition variable.
+\end_layout
+
+\begin_layout Standard
+The problem really is that since 
+\begin_inset Formula $G\left(0,t\right)=a_{0}\left(t\right)$
+\end_inset
+
+ isn't a known function or one we know how to solve for,
+ we would not be able to solve the PDE (which is actually quite usual for us not to solve),
+ but more crucially,
+ if we try to get moments from it by deriving it and setting 
+\begin_inset Formula $x=1$
+\end_inset
+
+,
+ we would not be rid of the 
+\begin_inset Formula $G\left(0,t\right)$
+\end_inset
+
+ term.
+ For example,
+ if we try to get the first moment equation:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}G}{\partial x\partial t}\left(x,t\right) & =\frac{\partial^{2}G}{\partial x^{2}}\left(x,t\right)\left[q\left(x\right)-\Lambda x\right]+\frac{\partial G}{\partial x}\left(x,t\right)\left[\frac{\partial q}{\partial x}-\Lambda\right]\\
+ & +a\left[G\left(x,t\right)-G\left(0,t\right)\right]+a\left(x-1\right)\frac{\partial G}{\partial x}\left(x,t\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And when we set 
+\begin_inset Formula $x=1$
+\end_inset
+
+ we get:
+\begin_inset Formula 
+\begin{align*}
+\frac{dM_{1}}{dt} & =\frac{\partial^{2}G}{\partial x\partial t}\left(1,t\right)=\frac{\partial^{2}G}{\partial x^{2}}\left(1,t\right)\left(\cancel{\lambda_{0}+\lambda_{2,0}-\lambda_{0}-\lambda_{2,0}}\right)+M_{1}\left(\lambda_{2,0}-\lambda_{0}\right)+a\left(1-a_{0}\left(t\right)\right)\\
+ & =M_{1}\left(\lambda_{2,0}-\lambda_{0}\right)+a\left(1-a_{0}\left(t\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which we can't really use,
+ because we don't know 
+\begin_inset Formula $a_{0}\left(t\right)$
+\end_inset
+
+.
+ It's somewhat similar in terms of it being problematic to when we tried to find a PDE for the meta stable solution in the logistical model,
+ but didn't know how to handle the extinction case.
+\end_layout
+
+\begin_layout Paragraph
+What we need is some condition so that this problem goes away.
+ 
+\end_layout
+
+\begin_layout Standard
+We can introduce the condition that 
+\begin_inset Formula $a_{0}\left(t\right)$
+\end_inset
+
+ is always negligible (compared to 1,
+ for example),
+ so we can always drop it relative to the terms coming out of 
+\begin_inset Formula $G\left(x,t\right)$
+\end_inset
+
+.
+ This can happen.
+ For example,
+ if 
+\begin_inset Formula $\lambda_{2,0}\gg\lambda_{0}$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $G\left(x,0\right)=x^{N_{0}}$
+\end_inset
+
+ for some large 
+\begin_inset Formula $N_{0}$
+\end_inset
+
+,
+ the system is supercritical and it would be negligibly unlikely for extinction to occur.
+ So this condition can be physically satiable for some cases.
+ It can also work even if 
+\begin_inset Formula $a<0$
+\end_inset
+
+,
+ as we'll see in the next section,
+ because it does not cause the population to dip in expectation.
+\end_layout
+
+\begin_layout Standard
+This is the case I will go with,
+ because it assumes the least amount of knowledge that still keeps the problem somewhat interesting.
+\end_layout
+
+\begin_layout Paragraph
+Other Options
+\end_layout
+
+\begin_layout Standard
+We could also assume that 
+\begin_inset Formula $a\ll\lambda_{2,0}$
+\end_inset
+
+,
+ but that would make this problem return to be the stationary problem (which isn't autonomous in 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ but is at least autonomous in 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ which is,
+ again,
+ the important bit).
+ However,
+ this is less interesting,
+ because we already have the solution to that problem from class.
+\end_layout
+
+\begin_layout Standard
+We could also do something a bit more interesting.
+ The ODE for 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ was given above to be:
+\begin_inset Formula 
+\[
+\frac{da_{0}}{dt}=\lambda_{0}a_{1}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $a_{0}\ll1$
+\end_inset
+
+ for all times and throwing it away is somewhat less interesting than maybe saying that for times of interest,
+ 
+\begin_inset Formula $a_{0}\left(t\right)\sim\lambda_{0}Ct$
+\end_inset
+
+ for some (small) constant 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ This arises if we physically assume 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+ is some small and rather constant value during those times.
+ This would allow us to actually solve things,
+ and is more interesting than setting 
+\begin_inset Formula $a_{0}=0$
+\end_inset
+
+ whenever we need to,
+ compared to 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This is satiated in similar conditions to the one I chose above,
+ it just lets the next order in 
+\begin_inset Formula $t$
+\end_inset
+
+ in,
+ which would probably somewhat extend the range of applicability,
+ if we pick 
+\begin_inset Formula $C$
+\end_inset
+
+ well.
+ Picking 
+\begin_inset Formula $C$
+\end_inset
+
+ would be a problem,
+ which is mostly why I wouldn't go with it without some more drill down to estimate it.
+\end_layout
+
+\begin_layout Subsection
+Derive an ODE for the first moment of the population at time 
+\begin_inset Formula $t$
+\end_inset
+
+ under your suggested condition
+\end_layout
+
+\begin_layout Standard
+Well,
+ if we assume 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ is negligible,
+ we still have from above:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}G}{\partial x\partial t}\left(x,t\right) & =\frac{\partial^{2}G}{\partial x^{2}}\left(x,t\right)\left[q\left(x\right)-\Lambda x\right]+\frac{\partial G}{\partial x}\left(x,t\right)\left[\frac{\partial q}{\partial x}-\Lambda\right]\\
+ & +a\left[G\left(x,t\right)\cancel{-G\left(0,t\right)}\right]+a\left(x-1\right)\frac{\partial G}{\partial x}\left(x,t\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And setting 
+\begin_inset Formula $x=1$
+\end_inset
+
+ we still get:
+\series bold
+
+\begin_inset Formula 
+\[
+\boldsymbol{\frac{dM_{1}}{dt}=M_{1}}\boldsymbol{\left(\lambda_{2,0}-\lambda_{0}\right)+a\left(1\cancel{-a_{0}\left(t\right)}\right)\approx M_{1}\left(\lambda_{2,0}-\lambda_{0}\right)+a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solution for this wasn't required in the question,
+ but if we look at it,
+ we can see values of 
+\begin_inset Formula $a$
+\end_inset
+
+ which risk our assumptions.
+\end_layout
+
+\begin_layout Standard
+The solution is that of an inhomogeneous ODE,
+ and we pick the particular solution to be a constant 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus,
+ we get:
+\begin_inset Formula 
+\[
+C=-\frac{a}{\lambda_{2,0}-\lambda_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the full solution is:
+\begin_inset Formula 
+\[
+M_{1}\left(t\right)=Ae^{\left(\lambda_{2,0}-\lambda_{0}\right)t}-\frac{a}{\lambda_{2,0}-\lambda_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At 
+\begin_inset Formula $t=0$
+\end_inset
+
+ we have 
+\begin_inset Formula $M_{1}=N_{0}$
+\end_inset
+
+ and we get:
+\begin_inset Formula 
+\[
+A=N_{0}+\frac{a}{\lambda_{2,0}-\lambda_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we get,
+ in total:
+\begin_inset Formula 
+\[
+M_{1}\left(t\right)=\left(N_{0}+\frac{a}{\lambda_{2,0}-\lambda_{0}}\right)e^{\left(\lambda_{2,0}-\lambda_{0}\right)t}-\frac{a}{\lambda_{2,0}-\lambda_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+ even negative values of 
+\begin_inset Formula $a$
+\end_inset
+
+ never cause the population to dip down,
+ so they pose little additional risk to our assumptions holding.
+ It seems that being supercritical in the no-feedback terms and a large enough initial population should indeed suffice.
+\end_layout
+
+\begin_layout Paragraph
+What would this be with the slightly more complicated version?
+\end_layout
+
+\begin_layout Standard
+If we were to take the slightly more interesting case of 
+\begin_inset Formula $a_{0}\sim\lambda_{0}Ct$
+\end_inset
+
+ for some small 
+\begin_inset Formula $C$
+\end_inset
+
+,
+ we would get a very similar:
+\begin_inset Formula 
+\[
+\frac{dM_{1}}{dt}=M_{1}\left(\lambda_{2,0}-\lambda_{0}\right)+a\left(1-a_{0}\left(t\right)\right)\approx M_{1}\left(\lambda_{2,0}-\lambda_{0}\right)+a\left(1-\lambda_{0}Ct\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is still solvable rather easily,
+ but introduces this 
+\begin_inset Formula $C$
+\end_inset
+
+ parameter,
+ so I still prefer the simpler version above for most purposes.
+\end_layout
+
+\end_body
+\end_document
